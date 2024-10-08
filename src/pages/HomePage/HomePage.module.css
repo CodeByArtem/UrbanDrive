@@ -1,0 +1,35 @@
+.content {
+    text-align: center;
+    padding: 20px;
+    background-color: #f4f4f4;
+  }
+  
+  .wrapper {
+    max-width: 800px;
+    margin: auto;
+  }
+  
+  .title {
+    font-size: 2.5em;
+    color: #333;
+  }
+  
+  .text {
+    margin: 20px 0;
+    font-size: 1.2em;
+    color: #007bff;
+  }
+  
+  .link {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+  }
+  
+  .link:hover {
+    background-color: #0056b3;
+  }
+  
