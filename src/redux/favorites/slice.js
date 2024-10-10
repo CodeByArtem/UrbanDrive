@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import FAVORITES_INI_STATE from "./initialState"
+import {FAVORITES_INI_STATE} from "./initialState"
 
 const favoritesSlice = createSlice({
   name: "favorites",

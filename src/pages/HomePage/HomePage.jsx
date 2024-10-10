@@ -6,14 +6,14 @@ const HomePage = () => {
     <main className={css.content}>
       <div className={css.wrapper}>
         <h1 className={css.title}>
-          Welcome to UBER Name - Your Trusted Car Rental Service in Ukraine
+          Welcome to our <span>camper</span> website
         </h1>
         <p className={css.text}>
-          Experience the freedom of exploring Ukraine with our wide range of rental cars. 
-          Enjoy competitive prices, flexible rental options, and exceptional customer service.
+          Start exploring today and find the camper that will make your journey
+          unforgettable.
         </p>
         <Link className={css.link} to={"/catalog"}>
-          Explore Our Cars
+          Explore campers
         </Link>
       </div>
     </main>
