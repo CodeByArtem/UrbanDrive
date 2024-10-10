@@ -1,17 +1,19 @@
+
+
 import Catalog from "../../components/Catalog/Catalog";
-// import FiltersForm from "../../components/FiltersForm/FiltersForm";
-// import { InvisibleTitle } from "../../components/UI";
+import Filters from "../../components/FiltersForm/FiltersForm";
+import InvisibleTitle from "../../components/MIU/InvisibleTitle/InvisibleTitle";
 import css from "./CatalogPage.module.css";
 
 const CatalogPage = () => {
   return (
     <main className={css.container}>
-      {/* <InvisibleTitle>
+      <InvisibleTitle>
         Explore Our Exclusive Camper Collection – Find Your Perfect Adventure
         Companion
-      </InvisibleTitle> */}
+      </InvisibleTitle>
       <section className={css.filters}>
-        {/* <FiltersForm /> */}
+        <Filters />
       </section>
       <section className={css.catalog}>
         <Catalog />

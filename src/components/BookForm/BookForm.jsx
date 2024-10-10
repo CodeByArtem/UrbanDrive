@@ -1,93 +1,115 @@
-import { useEffect, useRef, useState } from "react";
+
 import icons from "../../assets/iconss.svg";
-import { generateCalendar, isSameDate } from "../../helpers/calendar";
-import css from "./Calendar.module.css";
-import clsx from "clsx";
-import { daysOfWeek, months } from "../../constants";
+import css from "./BookForm.module.css";
+import Calendar from "../Calendar/Calendar";
+import { useState } from "react";
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { Controller, useForm } from "react-hook-form";
+import { formatDate } from "../../helpers/calendar";
+import BookInput from "../MIU/BookInput/BookInput";
+import LoadButton from "../MIU/LoadButton/LoadButton";
 
-const Calendar = ({ date: currentDate, handleSetDate, onClose }) => {
-  const date = currentDate || new Date();
-  const [selectedDate, setSelectedDate] = useState(date);
-  const calendarRef = useRef(null);
 
-  useEffect(() => {
-    calendarRef.current.scrollIntoView({ behavior: "smooth" });
-    window.addEventListener("click", onClose);
-    return () => window.removeEventListener("click", onClose);
-  }, [onClose]);
+const validationSchema = yup.object({
+  email: yup
+    .string()
+    .email("Enter a valid email address")
+    .required("Email is required"),
+  name: yup
+    .string()
+    .min(2, "Must be at least 2 characters long")
+    .max(25, "Must be no more than 25 characters")
+    .required("Name is required"),
+  date: yup.string().required("Date is required"),
+});
+const BookForm = () => {
+  const [isCalendarOpen, setIsCalendarOpen] = useState(false);
+  const [date, setDate] = useState(null);
+  const {
+    control,
+    handleSubmit,
+    register,
+    setValue,
+    setError,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(validationSchema),
+  });
 
-  const handlePrev = () => {
-    setSelectedDate(
-      (prev) => new Date(prev.getFullYear(), prev.getMonth() - 1)
+  const onSubmit = () => {
+    window.location.reload();
+  };
+
+  const handleSetDate = (date) => {
+    setDate(date);
+    setValue("date", formatDate(date));
+    setError("date", null);
+  };
+
+  const handleCloseCalendar = () => {
+    setIsCalendarOpen(false);
+  };
+
+  const renderCalendar = ({ field }) => {
+    return (
+      <BookInput
+        value={date ? formatDate(date) : ""}
+        field={field}
+        type="text"
+        placeholder="Booking date"
+        iconPath={icons + "#icon-calendar"}
+        style={{ cursor: "pointer", marginBottom: 0, pointerEvents: "none" }}
+        error={errors.date}
+      />
     );
   };
 
-  const handleNext = () => {
-    setSelectedDate(
-      (prev) => new Date(prev.getFullYear(), prev.getMonth() + 1)
-    );
-  };
-
-  const setDate = (date) => {
-    handleSetDate(date);
-    onClose();
-  };
-
-  const currentMonth = months[selectedDate.getMonth()];
-  const currentYear = selectedDate.getFullYear();
-  const days = generateCalendar(selectedDate.getMonth() + 1, currentYear);
   return (
-    <div
-      className={css.container}
-      onClick={(e) => e.stopPropagation()}
-      ref={calendarRef}
-    >
-      <div className={css.header}>
-        <button
-          onClick={handlePrev}
-          className={css.button}
-          type="button"
-          aria-label="previous month"
+    <div className={css.container}>
+      <h3 className={css.title}>Book your campervan now</h3>
+      <p className={css.text}>
+        Stay connected! We are always ready to help you.
+      </p>
+      <form className={css.form} onSubmit={handleSubmit(onSubmit)}>
+        <BookInput
+          register={register("name")}
+          type="text"
+          placeholder="Name"
+          error={errors.name}
+        />
+        <BookInput
+          register={register("email")}
+          type="text"
+          placeholder="Email"
+          error={errors.email}
+        />
+        <div
+          className={css.calenderWrapper}
+          onClick={(e) =>
+            e.stopPropagation() || setIsCalendarOpen((prev) => !prev)
+          }
         >
-          <svg className={clsx(css.icon, css.prev)} width={24} height={24}>
-            <use xlinkHref={icons + "#icon-arrow"}></use>
-          </svg>
-        </button>
-        <p className={css.monthYear}>{currentMonth + " " + currentYear}</p>
-        <button
-          onClick={handleNext}
-          className={css.button}
-          type="button"
-          aria-label="previous month"
-        >
-          <svg className={clsx(css.icon, css.next)} width={24} height={24}>
-            <use xlinkHref={icons + "#icon-arrow"}></use>
-          </svg>
-        </button>
-      </div>
-      <ul className={css.weekList}>
-        {daysOfWeek.map((day) => (
-          <li key={day}>{day}</li>
-        ))}
-      </ul>
-      <ul className={css.dayList}>
-        {days.map((day, index) => (
-          <li key={index}>
-            <button
-              className={clsx({
-                [css.selected]: isSameDate(date, day),
-                [css.notThisMonth]: selectedDate.getMonth() !== day.getMonth(),
-              })}
-              type="button"
-              onClick={() => setDate(day)}
-            >
-              {day.getDate()}
-            </button>
-          </li>
-        ))}
-      </ul>
+          <Controller name="date" control={control} render={renderCalendar} />
+          {isCalendarOpen && (
+            <Calendar
+              date={date}
+              handleSetDate={handleSetDate}
+              onClose={handleCloseCalendar}
+            />
+          )}
+        </div>
+        <textarea
+          {...register("comment")}
+          className={css.textarea}
+          placeholder="Comment"
+        ></textarea>
+        <LoadButton type={"submit"} style={{ minWidth: "160px" }}>
+          Send
+        </LoadButton>
+      </form>
     </div>
   );
 };
 
-export default Calendar;
+export default BookForm;

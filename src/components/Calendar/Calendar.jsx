@@ -1,9 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import icons from "../../assets/iconss.svg";
-import { generateCalendar, isSameDate } from "../../helpers/calendar";
+
 import css from "./Calendar.module.css";
 import clsx from "clsx";
-import { daysOfWeek, months } from "../../constants";
+import { daysOfWeek, months } from "../../helpers/constants";
+import { generateCalendar, isSameDate } from "../../helpers/calendar";
+
 
 const Calendar = ({ date: currentDate, handleSetDate, onClose }) => {
   const date = currentDate || new Date();

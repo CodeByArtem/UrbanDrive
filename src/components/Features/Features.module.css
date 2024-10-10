@@ -1,0 +1,33 @@
+.container {
+    max-width: 430px;
+    height: 530px;
+  }
+  .categoryList {
+    height: 200px;
+    overflow: auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 44px;
+  }
+  .vehicleTitle {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 1.2;
+    margin-bottom: 24px;
+  }
+  
+  .vehicleList {
+    padding-top: 24px;
+    border-top: 1px solid rgba(16, 24, 40, 0.1);
+  }
+  .vehicleItem {
+    justify-content: space-between;
+    display: flex;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 1.33;
+  }
+  .vehicleItem:not(:last-child) {
+    margin-bottom: 14px;
+  }

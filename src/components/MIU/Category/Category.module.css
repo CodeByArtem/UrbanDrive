@@ -1,0 +1,18 @@
+.container {
+    width: fit-content;
+    height: 44px;
+  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+  
+    padding: 10px 18px;
+  
+    border-radius: 100px;
+    background-color: var(--color-second-bg);
+  }
+  .icon {
+    width: 20px;
+    height: 20px;
+  }

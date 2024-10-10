@@ -1,0 +1,14 @@
+.container {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  
+  .icon {
+    fill: var(--color-gold);
+  }
+  
+  .text {
+    text-decoration: underline;
+    text-decoration-skip-ink: none;
+  }

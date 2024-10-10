@@ -1,0 +1,60 @@
+.form {
+    width: 100%;
+  }
+  .fieldset {
+    border: none;
+    padding: 0;
+    margin: 0;
+  }
+  .fieldset:not(:last-child) {
+    margin-bottom: 32px;
+  }
+  .fieldset:last-child {
+    margin-bottom: 64px;
+  }
+  .legend {
+    color: var(--color-font-main-blur);
+    font-weight: 500;
+    margin-bottom: 8px;
+  }
+  
+  .legendFilters {
+    margin-bottom: 14px;
+  }
+  
+  .fieldsetRadio {
+    border: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .fieldsetRadio:not(:last-child) {
+    margin-bottom: 32px;
+  }
+  .legendRadio {
+    width: 100%;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.2;
+    padding-bottom: 25px;
+    border-bottom: 1px solid rgba(16, 24, 40, 0.1);
+    margin-bottom: 24px;
+  }
+  
+  .equipmentsList {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+  .equipmentsItem {
+    height: 95px;
+  }
+  
+  .typesList {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 колонки с одинаковой шириной */
+    gap: 10px;
+  }
+  .typesItem {
+    height: 95px;
+  }

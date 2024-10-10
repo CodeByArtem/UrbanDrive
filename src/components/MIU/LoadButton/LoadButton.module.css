@@ -1,0 +1,24 @@
+.button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+    height: 56px;
+    min-width: 173px;
+    padding: 10px;
+  
+    font-size: inherit;
+    font-family: inherit;
+    font-weight: 500;
+    color: var(--color-white);
+    background-color: var(--color-button);
+  
+    border-radius: 200px;
+    border: none;
+  
+    transition: background-color var(--transition-setting);
+  }
+  
+  .button:hover {
+    background-color: var(--color-button-hover);
+  }

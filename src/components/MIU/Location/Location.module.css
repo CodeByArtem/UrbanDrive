@@ -1,0 +1,10 @@
+.container {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  
+  .icon {
+    stroke: var(--color-font-main);
+    fill: transparent;
+  }

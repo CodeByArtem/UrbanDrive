@@ -1,0 +1,18 @@
+.list {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  
+  .icon {
+    fill: var(--color-second-bg);
+    stroke: var(--color-second-bg);
+  }
+  .fill {
+    fill: var(--color-gold);
+    stroke: var(--color-gold);
+  }
+  .text {
+    text-decoration: underline;
+    text-decoration-skip-ink: none;
+  }

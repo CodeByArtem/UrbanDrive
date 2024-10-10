@@ -1,0 +1,35 @@
+.container {
+    position: relative;
+  }
+  .icon {
+    position: absolute;
+    left: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    stroke: var(--color-font-main);
+    fill: transparent;
+  }
+  .input {
+    width: 100%;
+    padding: 18px 18px 18px 44px;
+  
+    color: var(--color-font-main);
+  
+    border-radius: 10px;
+    border: none;
+  
+    background-color: var(--color-main-bg);
+  }
+  
+  .input::placeholder {
+    color: var(--color-font-main-blur);
+  }
+  
+  .input:focus,
+  .input:focus-visible {
+    outline: none;
+  }
+  
+  .empty {
+    stroke: var(--color-font-main-blur);
+  }

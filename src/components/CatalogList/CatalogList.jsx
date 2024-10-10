@@ -9,10 +9,10 @@ const CatalogList = ({ campers }) => {
   return (
     <ul className={css.list}>
       {campers.map((camper) => (
-        <li key={camper._id}>
+        <li key={camper.id}>
           <CamperCar
             camper={camper}
-            liked={favorites.some((item) => item._id === camper._id)}
+            liked={favorites.some((item) => item.id === camper.id)}
           />
         </li>
       ))}

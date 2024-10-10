@@ -1,0 +1,41 @@
+.reviewList {
+    max-width: 430px;
+    max-height: 530px;
+    overflow: auto;
+  }
+  
+  .reviewItem:not(:last-child) {
+    margin-bottom: 24px;
+  }
+  
+  .header {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+  
+  .avatar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+    width: 60px;
+    height: 60px;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 1.25;
+  
+    color: var(--color-button);
+    border-radius: 50%;
+    background-color: var(--color-second-bg);
+  }
+  
+  .name {
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 1.33;
+    margin-bottom: 4px;
+  }
+  .text {
+    color: var(--color-font-second);
+  }
