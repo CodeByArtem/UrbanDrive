@@ -41,7 +41,7 @@ export const ANIMATION = {
     },
     {
       name: "shower",
-      text: "Shower/WC",
+      text: "Bathroom",
       iconStyles: { stroke: "#101828", fill: "transparent" },
     },
   ];
