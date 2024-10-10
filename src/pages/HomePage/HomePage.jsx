@@ -6,14 +6,13 @@ const HomePage = () => {
     <main className={css.content}>
       <div className={css.wrapper}>
         <h1 className={css.title}>
-          Welcome to our <span>camper</span> website
+        Campers of your dreams
         </h1>
         <p className={css.text}>
-          Start exploring today and find the camper that will make your journey
-          unforgettable.
+        You can find everything you want in our catalog
         </p>
         <Link className={css.link} to={"/catalog"}>
-          Explore campers
+        View Now
         </Link>
       </div>
     </main>
