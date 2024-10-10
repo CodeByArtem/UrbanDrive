@@ -11,10 +11,8 @@ import {
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 
-
-import { ubersReducer } from "./uber/slice";
+import { campersReducer } from "./campers/slice";
 import { favoritesReducer } from "./favorites/slice";
-
 
 const favoritesPersistConfig = {
   key: "favorites",
@@ -29,7 +27,7 @@ const persistedFavoritesReducer = persistReducer(
 
 export const store = configureStore({
   reducer: {
-    campers: ubersReducer,
+    campers: campersReducer,
     favorites: persistedFavoritesReducer,
   },
 

@@ -3,4 +3,4 @@ export const CATALOG_INITIAL_STATE = {
     isLoading: false,
     error: null,
     nextPage: true,
-};
+  };
