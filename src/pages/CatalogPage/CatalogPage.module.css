@@ -1,0 +1,13 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+  }
+  .filters {
+    max-width: 360px;
+    width: 100%;
+  }
+  .catalog {
+    max-width: 888px;
+    width: 100%;
+  }

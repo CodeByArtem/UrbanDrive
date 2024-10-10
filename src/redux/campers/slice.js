@@ -9,32 +9,37 @@ const campersSlice = createSlice({
     builder
       .addCase(getCampers.pending, (state) => {
         state.error = null;
-        state.data = null;
+        state.data = null; // Сброс состояния данных при запросе
+        state.isLoading = true; // Установка флага загрузки
       })
       .addCase(getCampers.fulfilled, (state, action) => {
-        state.data = action.payload;
-        state.nextPage = action.payload.length === 8;
+        state.isLoading = false; // Остановка флага загрузки
+        state.data = action.payload.items; // Сохранение массива кемперов
+        state.nextPage = action.payload.items.length === 8; // Установка флага наличия следующей страницы
+        state.total = action.payload.total; // Сохранение общего количества
       })
       .addCase(getCampers.rejected, (state, action) => {
-        state.error = action.payload;
-        state.nextPage = false;
+        state.isLoading = false; // Остановка флага загрузки
+        state.error = action.payload; // Сохранение ошибки
+        state.nextPage = false; // Сброс флага следующей страницы
       })
-      // getMoreCampers
+      // Обработка getMoreCampers
       .addCase(getMoreCampers.pending, (state) => {
-        state.isLoading = true;
-        state.error = null;
+        state.isLoading = true; // Установка флага загрузки
+        state.error = null; // Сброс ошибки
       })
       .addCase(getMoreCampers.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.data = [...state.data, ...action.payload];
-        state.nextPage = action.payload.length === 4;
+        state.isLoading = false; // Остановка флага загрузки
+        state.data = [...state.data, ...action.payload.items]; // Добавление новых кемперов
+        state.nextPage = action.payload.items.length === 4; // Установка флага наличия следующей страницы
       })
       .addCase(getMoreCampers.rejected, (state, action) => {
-        state.isLoading = false;
-        state.error = action.payload;
-        state.nextPage = false;
+        state.isLoading = false; // Остановка флага загрузки
+        state.error = action.payload; // Сохранение ошибки
+        state.nextPage = false; // Сброс флага следующей страницы
       });
   },
 });
 
+// Экспорт редьюсера
 export const campersReducer = campersSlice.reducer;

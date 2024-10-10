@@ -1,0 +1,8 @@
+.title {
+    max-width: fit-content;
+    padding: 10px;
+    margin: 30px auto 0;
+  
+    text-transform: uppercase;
+    color: var(--color-font-second);
+  }

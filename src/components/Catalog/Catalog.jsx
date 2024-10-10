@@ -1,10 +1,13 @@
 import { useDispatch, useSelector } from "react-redux"
 import css from "./Catalog.module.css"
-import { selectError, selectIsFetching, selectIsNextPage } from "../../redux/campers/selectors";
+import { selectCampers, selectError, selectIsFetching, selectIsNextPage } from "../../redux/campers/selectors";
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { getCampers, getMoreCampers } from "../../redux/campers/operations";
 import { getSearchParams } from "../../helpers/searchParams";
+import Loader from "../Loader/Loader";
+import CatalogList from "../CatalogList/CatalogList";
+import Message from "../MIU/Message/Message";
 
 
 
@@ -12,7 +15,7 @@ import { getSearchParams } from "../../helpers/searchParams";
 
 const Catalog = () => {
     const dispatch = useDispatch();
-    const campers = useSelector(selectIsFetching);
+    const campers = useSelector(selectCampers);
     const isFetchingData = useSelector(selectIsFetching);
     const errorMessage = useSelector(selectError);
     const isNextPage = useSelector(selectIsNextPage);
@@ -41,6 +44,8 @@ const Catalog = () => {
             setPage(nextPage);
           };
 
+          console.log("sdasd",campers);
+         
 const slicedDate = campers ? campers.slice(0, 4 * page) : [];
 const isEmpty = campers?.length === 0 && !isLoading;
 const isCalendar = !errorMessage && !!slicedDate.length;
