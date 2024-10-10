@@ -1,0 +1,13 @@
+:root {
+    --color-font-main: #101828;
+    --color-font-main-blur: rgba(16, 24, 40, 0.6);
+    --color-font-second: #475467;
+    --color-main-bg: #f7f7f7;
+    --color-second-bg: #f2f4f7;
+    --color-button: #e44848;
+    --color-button-hover: #d84343;
+    --color-second-bg-hover: #87d28d;
+    --color-gold: #ffc531;
+    --color-white: #ffffff;
+    --transition-setting: 0.3s ease;
+  }
