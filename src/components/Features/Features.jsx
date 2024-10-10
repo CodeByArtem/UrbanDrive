@@ -1,14 +1,22 @@
-
 import icons from "../../assets/iconss.svg";
+import { getCategories, getAllDetails } from "../../helpers"; // Импортируем getAllDetails
 import Category from "../MIU/Category/Category";
 
 import css from "./Features.module.css";
 
-const Features = ({ vehicle, details }) => {
+const Features = ({ camper }) => {
+  // Проверяем, что camper определен
+  if (!camper) {
+    return <p>Camper data is not available.</p>; // Или любое другое сообщение
+  }
+
+  const categories = getCategories(camper); // Получаем категории из camper
+  const { vehicle } = getAllDetails(camper); // Получаем детали о кемпере
+
   return (
     <div className={css.container}>
       <ul className={css.categoryList}>
-        {details.map(({ iconName, text, styles }, index) => (
+        {categories.map(({ iconName, text, styles }, index) => (
           <li key={index}>
             <Category iconPath={icons + "#icon-" + iconName} styles={styles}>
               {text}

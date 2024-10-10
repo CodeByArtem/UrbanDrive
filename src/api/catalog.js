@@ -15,7 +15,15 @@ export const instance = axios.create({
     return date;
   };
   
-  export const fetchCamper = (id) => {
-    const date = instance.get(`/campers/${id}`);
-    return date;
+  export const fetchCamper = async (id) => {
+    try {
+      console.log("Fetching camper with ID:", id); // Проверка ID
+      const response = await instance.get(`/campers/${id}`);
+      console.log("Camper data received:", response.data); // Проверка полученных данных
+      return response.data;
+    } catch (error) {
+      console.error("Error fetching camper:", error); // Проверка ошибок
+      throw error; // Пробросьте ошибку дальше для обработки
+    }
   };
+  

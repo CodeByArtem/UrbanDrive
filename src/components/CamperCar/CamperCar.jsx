@@ -1,12 +1,12 @@
 import { useCallback } from "react";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom"; // Импортируем useNavigate
 import clsx from "clsx";
 
 import { setFavorite } from "../../redux/favorites/slice";
 import css from "./CamperCar.module.css";
 import icons from "../../assets/iconss.svg";
 import { formatRentPrice, getCategories } from "../../helpers";
-// import Modal from "../Modal/Modal"; // Если вы его вернете
 import CamperImage from "../MIU/CamperImage/CamperImage";
 import Rating from "../MIU/Rating/Raiting";
 import Category from "../MIU/Category/Category";
@@ -15,18 +15,14 @@ import Location from "../MIU/Location/Location";
 
 const CamperCart = ({ camper, liked = true }) => {
   const dispatch = useDispatch();
-  // const setModal = useModal(); // Если вы вернете useModal
-
-  // const closeModal = useCallback(() => {
-  //   setModal();
-  // }, [setModal]);
+  const navigate = useNavigate(); // Инициализируем useNavigate
   
-  const categories = getCategories(camper); // Проверьте, работает ли getCategories без details
-
-
+  const categories = getCategories(camper); 
   const handleOpenDetails = useCallback(() => {
-    // setModal(<Modal camper={camper} onClose={closeModal} />); // Если вы вернете useModal
-  }, [camper]);
+    console.log("Camper ID:", camper.id); // Проверка ID
+    navigate(`/catalog/${camper.id}`);
+  }, [camper.id, navigate]);
+  
 
   const handleLike = (camper) => {
     dispatch(setFavorite(camper));
@@ -34,7 +30,7 @@ const CamperCart = ({ camper, liked = true }) => {
 
   return (
     <div className={css.container}>
-       <CamperImage
+      <CamperImage
         src={camper.gallery[0].thumb}
         alt="Camper photo"
       />
@@ -72,7 +68,7 @@ const CamperCart = ({ camper, liked = true }) => {
         </ul>
         <LoadButton
           type="button"
-          onClick={handleOpenDetails} // Если вы вернете useModal
+          onClick={handleOpenDetails} // Обновленный обработчик
           style={{ minWidth: "166px" }}
         >
           Show more
