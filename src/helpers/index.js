@@ -9,7 +9,7 @@ const formatMeasurement = (value) => {
 
 export const getCategories = (camper) => {
   const result = [];
-  const { adults, transmission, engine, kitchen, AC } = camper;
+  const {  adults, transmission, engine, kitchen, AC, bathroom, TV, radio } = camper;
 
   if (adults && adults > 0) {
     result.push({
@@ -41,6 +41,27 @@ export const getCategories = (camper) => {
   }
   if (AC) {
     result.push({ iconName: "ac", text: "AC", styles: {} });
+  }
+  if (bathroom) {
+    result.push({
+      iconName: "bathroom",
+      text: "Bathroom",
+      styles: {},
+    });
+  }
+  if (TV) {
+    result.push({
+      iconName: "tv",
+      text: "TV",
+      styles: {},
+    });
+  }
+  if (radio) {
+    result.push({
+      iconName: "radio",
+      text: "Radio",
+      styles: {},
+    });
   }
 
   return result;

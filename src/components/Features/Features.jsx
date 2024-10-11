@@ -13,8 +13,9 @@ const Features = ({ camper }) => {
   }
   console.log("Camper data before getting details:", camper);
   const categories = getCategories(camper);
+  console.log('Categories:', categories);
   const { vehicle } = getAllDetails(camper);
-
+  console.log('Vehicle details:', vehicle);
   return (
     <div className={css.container}>
       <ul className={css.categoryList}>

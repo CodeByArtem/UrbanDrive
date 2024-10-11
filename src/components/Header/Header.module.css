@@ -28,7 +28,7 @@ color: #101828;
   opacity: 0.7;
 }
 .active {
-  color: var(--color-button-hover);
+  color: #d84343;
 }
 
 .logo {
