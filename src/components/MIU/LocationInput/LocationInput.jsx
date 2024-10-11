@@ -14,7 +14,7 @@ const suggestions = [
 const LocationInput = ({ id = "location-suggestions", ...rest }) => {
   return (
     <div className={css.container}>
-      <svg className={css.icon} width="16" height="16">
+      <svg className={css.icon} width="20" height="20">
         <use xlinkHref={icons + "#icon-location"}></use>
       </svg>
       <input {...rest} type="text" className={css.input} list={id} />
