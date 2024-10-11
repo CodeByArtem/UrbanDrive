@@ -40,7 +40,7 @@ export const ANIMATION = {
       iconStyles: { stroke: "#101828", fill: "transparent" },
     },
     {
-      name: "shower",
+      name: "bathroom",
       text: "Bathroom",
       iconStyles: { stroke: "#101828", fill: "transparent" },
     },

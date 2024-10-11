@@ -2,7 +2,7 @@ const searchParamsName = [
   { name: "ac", searchKey: "AC" },
   { name: "kitchen", searchKey: "kitchen" },
   { name: "tv", searchKey: "TV" },
-  { name: "shower", searchKey: "bathroom" },
+  { name: "bathroom", searchKey: "bathroom" },
 ];
 
 export const getSearchParams = (searchParams) => {

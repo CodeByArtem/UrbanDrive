@@ -16,7 +16,7 @@ const Filters = () => {
     automatic: !!searchParams.get("automatic"),
     kitchen: !!searchParams.get("kitchen"),
     tv: !!searchParams.get("tv"),
-    shower: !!searchParams.get("shower"),
+    bathroom: !!searchParams.get("bathroom"),
   });
 
   console.log("Initial filters:", filters);
