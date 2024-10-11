@@ -47,7 +47,7 @@ export const ANIMATION = {
   ];
   
   export const vehicleTypes = [
-    { name: "van", text: "Van" },
+    { name: "panelTruck", text: "panelTruck" },
     { name: "fullyIntegrated", text: "Fully Integrated" },
     { name: "alcove", text: "Alcove" },
   ];

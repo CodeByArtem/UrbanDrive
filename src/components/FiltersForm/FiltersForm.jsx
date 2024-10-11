@@ -1,12 +1,10 @@
 import { useState } from "react";
 import clsx from "clsx";
-
-
 import icons from "../../assets/iconss.svg";
 import css from "./FiltersForm.module.css";
 import { useSearchParams } from "react-router-dom";
 import LocationInput from "../MIU/LocationInput/LocationInput";
-import { vehicleEquipments, vehicleTypes,  } from "../../helpers/constants";
+import { vehicleEquipments, vehicleTypes } from "../../helpers/constants";
 import Checkbox from "../MIU/CheckBox/Checkbox";
 import LoadButton from "../MIU/LoadButton/LoadButton";
 
@@ -21,12 +19,24 @@ const Filters = () => {
     shower: !!searchParams.get("shower"),
   });
 
+  console.log("Initial filters:", filters);
+  console.log("Initial selected vehicle type:", selected);
+
   const onChangeFilters = (name) => {
-    setFilters((prev) => ({ ...prev, [name]: !prev[name] }));
+    setFilters((prev) => {
+      const newFilters = { ...prev, [name]: !prev[name] };
+      console.log("Updated filters:", newFilters);
+      return newFilters;
+    });
   };
+
   const handleCheckboxChange = (e) => {
     const value = e.target.value;
-    setSelected((prev) => (prev === value ? null : value));
+    setSelected((prev) => {
+      const newSelected = prev === value ? null : value;
+      console.log("Updated selected vehicle type:", newSelected);
+      return newSelected;
+    });
   };
 
   const handleSubmit = (e) => {
@@ -36,6 +46,13 @@ const Filters = () => {
     formData.forEach((value, key) => {
       if (value.trim()) data[key] = value;
     });
+    console.log("Data to set in search params:", data);
+    // Добавляем фильтры в параметры
+    Object.keys(filters).forEach((key) => {
+      if (filters[key]) data[key] = true;
+    });
+
+    console.log("Data to set in search params:", data);
     setSearchParams(data);
   };
 

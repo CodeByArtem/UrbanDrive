@@ -1,22 +1,5 @@
-.container {
-    position: relative;
-    z-index: 101;
-    width: 982px;
-    height: 100%;
-    min-height: 720px;
-    height: fit-content;
-    max-height: calc(100vh - 80px);
-  
-    padding: 40px;
-    margin: 0 auto;
-    border-radius: 20px;
-  
-    background-color: var(--color-white);
-  
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-  }
+
+
   .name {
     font-weight: 600;
     font-size: 24px;
@@ -109,4 +92,16 @@
   
   .closeButton:hover {
     background-color: var(--color-second-bg);
+  }
+
+
+  .imageGallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 48px
+  }
+  
+  .imageGallery img {
+    max-width: 100%; /* Адаптивность */
+  
   }

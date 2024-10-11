@@ -53,7 +53,12 @@ const CamperDetails = () => {
           <Location>{camper.location}</Location>
         </div>
       </div>
-      <CamperImage src={camper.gallery[0].original} alt={camper.name} />
+      {/* Секция для изображений */}
+      <div className={css.imageGallery}>
+        {camper.gallery.map((image, index) => (
+          <CamperImage key={index} src={image.original} alt={camper.name} />
+        ))}
+      </div>
       <p className={css.description}>{camper.description}</p>
       <ul className={css.navList}>
         {navList.map((nav) => (
@@ -71,7 +76,7 @@ const CamperDetails = () => {
       </ul>
       <div className={css.footerWrapper}>
         {selectedNav === navList[0] && (
-          <Features vehicle={camper} details={camper} />
+          <Features camper={camper} /> 
         )}
         {selectedNav === navList[1] && <Reviews reviews={camper.reviews} />}
         <BookForm />
