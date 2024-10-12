@@ -1,0 +1,30 @@
+/* src/components/NotFound.css */
+.notfound {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    background-color: #f8f9fa;
+  }
+  
+  .notfound h1 {
+    font-size: 6rem;
+    margin: 0;
+  }
+  
+  .notfound h2 {
+    font-size: 2rem;
+  }
+  
+  .notfound p {
+    margin: 1rem 0;
+  }
+  
+  .notfound a {
+    text-decoration: none;
+    color: #007bff;
+    font-weight: bold;
+  }
+  

@@ -5,13 +5,13 @@
   background: #f7f7f7;
   display: flex; 
   align-items: center; 
-  padding: 0 64px; 
+ 
  
 }
 .navList {
   display: flex;
   justify-content: center;
-padding-left: 450px;
+padding-left: 386px;
  
   
 }
@@ -35,7 +35,7 @@ color: #101828;
 }
 
 .logo {
-
+padding-left: 64px;
   cursor: pointer;
 
 

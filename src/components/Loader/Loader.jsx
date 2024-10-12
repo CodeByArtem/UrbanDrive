@@ -1,9 +1,9 @@
 import css from "./Loader.module.css";
-
+import loader from "../../assets/camp.svg"
 const Loader = () => {
   return (
     <div className={css.container}>
-      <div className={css.loader}></div>
+      <img src={loader} alt="Loading..." className={css.loader} />
     </div>
   );
 };

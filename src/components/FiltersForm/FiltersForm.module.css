@@ -34,7 +34,7 @@
   .legendRadio {
     width: 100%;
     font-size: 20px;
-    font-weight: 700;
+    font-weight: 600;
     line-height: 1.2;
     padding-bottom: 25px;
     border-bottom: 1px solid rgba(16, 24, 40, 0.1);
@@ -52,7 +52,7 @@
   
   .typesList {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 колонки с одинаковой шириной */
+    grid-template-columns: repeat(3, 1fr); 
     gap: 10px;
   }
   .typesItem {

@@ -1,4 +1,3 @@
-
 import icons from "../../assets/iconss.svg";
 import css from "./BookForm.module.css";
 import Calendar from "../Calendar/Calendar";
@@ -9,7 +8,15 @@ import { Controller, useForm } from "react-hook-form";
 import { formatDate } from "../../helpers/calendar";
 import BookInput from "../MIU/BookInput/BookInput";
 import LoadButton from "../MIU/LoadButton/LoadButton";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
+// Добавляем функцию для проверки, является ли дата будущей
+const isFutureDate = (date) => {
+  const today = new Date();
+  today.setHours(0, 0, 0, 0); // Устанавливаем часы, минуты и секунды в 0 для сравнения только по дате
+  return new Date(date) >= today; // Возвращает true, если дата не в прошлом
+};
 
 const validationSchema = yup.object({
   email: yup
@@ -21,8 +28,12 @@ const validationSchema = yup.object({
     .min(2, "Must be at least 2 characters long")
     .max(25, "Must be no more than 25 characters")
     .required("Name is required"),
-  date: yup.string().required("Date is required"),
+  date: yup
+    .string()
+    .test("is-future", "Date cannot be in the past", (value) => isFutureDate(value)) // Проверка на будущее
+    .required("Date is required"),
 });
+
 const BookForm = () => {
   const [isCalendarOpen, setIsCalendarOpen] = useState(false);
   const [date, setDate] = useState(null);
@@ -38,7 +49,10 @@ const BookForm = () => {
   });
 
   const onSubmit = () => {
-    window.location.reload();
+    toast.success("Бронирование успешно!");
+    setTimeout(() => {
+      window.location.reload();
+    }, 2000); 
   };
 
   const handleSetDate = (date) => {

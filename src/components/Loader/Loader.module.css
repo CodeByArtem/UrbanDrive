@@ -1,49 +1,24 @@
 .container {
-    width: fit-content;
-    margin: 200px auto 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* или любое другое значение в зависимости от вашего макета */
+  overflow: hidden; /* Скрыть элементы, выходящие за пределы контейнера */
+}
+
+.loader {
+  width: 100px; /* Настройте размер лоадера по необходимости */
+  animation: move 2s linear infinite; /* Анимация движения */
+}
+
+@keyframes move {
+  0% {
+    transform: translateX(-100px); /* Начальная позиция за пределами слева */
   }
-  .loader {
-    width: 60px;
-    aspect-ratio: 1;
-    color: var(--color-button);
-    background: linear-gradient(currentColor 0 0) 100% 0,
-      linear-gradient(currentColor 0 0) 0 100%;
-    background-size: 50.1% 50.1%;
-    background-repeat: no-repeat;
-    animation: l7-0 1s infinite steps(1);
+  50% {
+    transform: translateX(0); /* Конечная позиция в центре */
   }
-  .loader::before,
-  .loader::after {
-    content: "";
-    position: absolute;
-    inset: 0 50% 50% 0;
-    background: currentColor;
-    transform: scale(var(--s, 1)) perspective(150px) rotateY(0deg);
-    transform-origin: bottom right;
-    animation: l7-1 0.5s infinite linear alternate;
+  100% {
+    transform: translateX(100px); /* Возвращение за пределы справа */
   }
-  .loader::after {
-    --s: -1, -1;
-  }
-  @keyframes l7-0 {
-    0% {
-      transform: scaleX(1) rotate(0deg);
-    }
-    50% {
-      transform: scaleX(-1) rotate(-90deg);
-    }
-  }
-  @keyframes l7-1 {
-    49.99% {
-      transform: scale(var(--s, 1)) perspective(150px) rotateX(-90deg);
-      filter: grayscale(0);
-    }
-    50% {
-      transform: scale(var(--s, 1)) perspective(150px) rotateX(-90deg);
-      filter: grayscale(0.8);
-    }
-    100% {
-      transform: scale(var(--s, 1)) perspective(150px) rotateX(-180deg);
-      filter: grayscale(0.8);
-    }
-  }
+}

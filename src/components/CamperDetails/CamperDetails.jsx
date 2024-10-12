@@ -2,7 +2,9 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { formatRentPrice } from '../../helpers';
 import { fetchCamper } from '../../api/catalog';
-import css from './CamperDetails.module.css'; // Импортируйте ваши стили
+import { useSelector } from 'react-redux';
+
+import css from './CamperDetails.module.css';
 import Rating from '../MIU/Rating/Raiting';
 import Location from '../MIU/Location/Location';
 import CamperImage from '../MIU/CamperImage/CamperImage';
@@ -10,6 +12,8 @@ import NavRadioButton from '../MIU/NavRadioButton/NavRadioButton';
 import Features from '../Features/Features';
 import Reviews from '../Reviews/Reviews';
 import BookForm from '../BookForm/BookForm';
+import Loader from '../Loader/Loader';
+import { selectError } from '../../redux/campers/selectors';
 
 const navList = ['features', 'reviews'];
 
@@ -17,18 +21,20 @@ const CamperDetails = () => {
   const { id } = useParams();
   const [camper, setCamper] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState('');
   const [selectedNav, setSelectedNav] = useState(navList[0]);
+
+  const errorMessage = useSelector(selectError); // Получаем сообщение об ошибке из Redux
 
   useEffect(() => {
     const getCamperDetails = async () => {
+      setLoading(true); 
       try {
         const data = await fetchCamper(id);
         setCamper(data);
       } catch (err) {
-        setError(err.message);
+        console.error(err.message); // Логируем ошибку в консоль
       } finally {
-        setLoading(false);
+        setLoading(false); 
       }
     };
 
@@ -39,8 +45,9 @@ const CamperDetails = () => {
     setSelectedNav(e.target.value);
   };
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error}</p>;
+  if (loading) return <Loader />; // Показываем лоадер
+  if (errorMessage) return <p>Error: {errorMessage}</p>; // Показываем ошибку из Redux
+
   if (!camper) return <p>No camper found.</p>;
 
   return (
@@ -53,7 +60,6 @@ const CamperDetails = () => {
           <Location>{camper.location}</Location>
         </div>
       </div>
-      {/* Секция для изображений */}
       <div className={css.imageGallery}>
         {camper.gallery.map((image, index) => (
           <CamperImage key={index} src={image.original} alt={camper.name} />
@@ -75,9 +81,7 @@ const CamperDetails = () => {
         ))}
       </ul>
       <div className={css.footerWrapper}>
-        {selectedNav === navList[0] && (
-          <Features camper={camper} /> 
-        )}
+        {selectedNav === navList[0] && <Features camper={camper} />}
         {selectedNav === navList[1] && <Reviews reviews={camper.reviews} />}
         <BookForm />
       </div>
