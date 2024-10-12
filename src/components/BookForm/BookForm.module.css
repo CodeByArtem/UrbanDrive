@@ -1,10 +1,10 @@
 .container {
-    max-width: 448px;
-    max-height: 530px;
+  border: 1px solid #DADDE1;
+  border-radius: 10px;
+  padding: 44px;
+  width: 641px;
+  height: 588px;
   
-    padding: 24px;
-    border: 1px solid rgba(16, 24, 40, 0.2);
-    border-radius: 10px;
   }
   .calenderWrapper {
     position: relative;

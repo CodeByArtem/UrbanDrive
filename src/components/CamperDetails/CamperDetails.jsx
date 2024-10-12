@@ -45,7 +45,7 @@ const CamperDetails = () => {
 
   return (
     <div className={css.container}>
-      <h1>{camper.name}</h1>
+      <h3>{camper.name}</h3>
       <div className={css.header}>
         <p className={css.price}>{formatRentPrice(camper.price)}</p>
         <div className={css.rating}>

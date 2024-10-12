@@ -57,7 +57,7 @@ const BookForm = () => {
         value={date ? formatDate(date) : ""}
         field={field}
         type="text"
-        placeholder="Booking date"
+        placeholder="Booking date*"
         iconPath={icons + "#icon-calendar"}
         style={{ cursor: "pointer", marginBottom: 0, pointerEvents: "none" }}
         error={errors.date}
@@ -75,13 +75,13 @@ const BookForm = () => {
         <BookInput
           register={register("name")}
           type="text"
-          placeholder="Name"
+          placeholder="Name*"
           error={errors.name}
         />
         <BookInput
           register={register("email")}
           type="text"
-          placeholder="Email"
+          placeholder="Email*"
           error={errors.email}
         />
         <div
@@ -104,7 +104,7 @@ const BookForm = () => {
           className={css.textarea}
           placeholder="Comment"
         ></textarea>
-        <LoadButton type={"submit"} style={{ minWidth: "160px" }}>
+        <LoadButton type={"submit"} style={{ marginLeft: "160px" }}>
           Send
         </LoadButton>
       </form>

@@ -9,15 +9,8 @@ const formatMeasurement = (value) => {
 
 export const getCategories = (camper) => {
   const result = [];
-  const {  adults, transmission, engine, kitchen, AC, bathroom, TV, radio } = camper;
+  const {  transmission, engine, kitchen, AC, bathroom, TV, radio, microwave, gas, water,  refrigerator   } = camper;
 
-  if (adults && adults > 0) {
-    result.push({
-      iconName: "users",
-      text: `${adults} adults`,
-      styles: {},
-    });
-  }
   if (transmission) {
     result.push({
       iconName: "automatic",
@@ -63,6 +56,36 @@ export const getCategories = (camper) => {
       styles: {},
     });
   }
+  if (microwave) {
+    result.push({
+      iconName: "microwave",
+      text: "Microwave",
+      styles: { fill: "transparent", stroke: "#101828" }
+      
+    });
+  }
+  if (gas) {
+    result.push({
+      iconName: "gas",
+      text: "Gas",
+    
+    });
+  }
+  if (water) {
+    result.push({
+      iconName: "water",
+      text: "Water",
+      styles: { fill: "transparent", stroke: "#101828" }
+   
+    });
+  }
+  if ( refrigerator) {
+    result.push({
+      iconName: "freezer",
+      text: "refrigerator",
+      styles: { fill: "transparent", stroke: "#101828" }
+    });
+  }
 
   return result;
 };
@@ -83,7 +106,7 @@ export const getAllDetails = (camper) => {
   ];
   const details = [];
 
-  const { bathroom, TV, radio, microwave, gas, water } = camper;
+  const { bathroom, TV, radio, microwave, gas, water,  } = camper;
 
   if (bathroom) {
     details.push({
@@ -127,6 +150,7 @@ export const getAllDetails = (camper) => {
       styles,
     });
   }
+
 
   return { vehicle, details };
 };

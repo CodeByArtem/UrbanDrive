@@ -1,16 +1,19 @@
 .header {
   border-bottom: 1px solid #f2f4f7;
-
   width: 1440px;
-  height: 72px;
+  height: 72px; 
   background: #f7f7f7;
-
+  display: flex; 
+  align-items: center; 
+  padding: 0 64px; 
+ 
 }
 .navList {
   display: flex;
   justify-content: center;
-  position: relative;
-  bottom: 38px;
+padding-left: 450px;
+ 
+  
 }
 .navLink {
   padding: 10px;
@@ -32,16 +35,13 @@ color: #101828;
 }
 
 .logo {
-  display: inline-block;
-  padding-left: 64px;
-  padding-top: 28px;
 
+  cursor: pointer;
 
 
 }
 
-.icon {
-}
+
 
 .logoTitle {
   font-size: 24px;

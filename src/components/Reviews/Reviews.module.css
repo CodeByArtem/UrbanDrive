@@ -1,11 +1,12 @@
 .reviewList {
-    max-width: 430px;
-    max-height: 530px;
+  width: 631px;
+  height: 340px;
+  
     overflow: auto;
   }
   
   .reviewItem:not(:last-child) {
-    margin-bottom: 24px;
+    padding-bottom: 44px;
   }
   
   .header {

@@ -1,8 +1,15 @@
-
+.container{
+  padding-top: 48px;
+}
 
   .name {
+    font-family: "Inter", sans-serif ;
     font-weight: 600;
     font-size: 24px;
+    color:  #101828;
+    width: 128px;
+    height: 32px;
+    
     line-height: 1.25;
     padding-right: 40px;
     margin-bottom: 8px;
@@ -37,7 +44,10 @@
   }
   .description {
     color: var(--color-font-second);
-    margin-bottom: 44px;
+    padding-bottom: 60px;
+    padding-top: 28px;
+    display: flex;
+    justify-content: center;
   }
   
   .navList {
@@ -45,13 +55,14 @@
     display: flex;
     gap: 40px;
     border-bottom: 1px solid rgba(16, 24, 40, 0.2);
-    margin-bottom: 44px;
+    padding-bottom: 24px;
   }
   
   .footerWrapper {
     display: flex;
     gap: 24px;
     justify-content: space-between;
+    padding-top: 44px;
   }
   
   /* Close button */
@@ -67,6 +78,7 @@
     border-radius: 16px;
     padding: 8px;
     transition: background-color var(--transition-setting);
+    
   }
   
   .closeButton::before,
@@ -98,7 +110,9 @@
   .imageGallery {
     display: flex;
     flex-wrap: wrap;
-    gap: 48px
+    gap: 48px;
+    justify-content: center;
+    
   }
   
   .imageGallery img {

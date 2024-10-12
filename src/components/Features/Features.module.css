@@ -1,9 +1,12 @@
 .container {
-    max-width: 430px;
-    height: 530px;
+  border-radius: 10px;
+  padding: 44px 80px;
+  width: 631px;
+  height: 588px;
+  background: #f7f7f7;
   }
   .categoryList {
-    height: 200px;
+
     overflow: auto;
     display: flex;
     flex-wrap: wrap;

@@ -37,8 +37,7 @@
   .prev {
     transform: rotate(180deg);
   }
-  .next {
-  }
+
   .monthYear {
     font-weight: 600;
     font-size: 16px;
@@ -84,6 +83,8 @@
     color: var(--color-font-second);
   }
   .dayList button.selected {
-    color: var(--color-button);
+    background: #475467;
     font-weight: 500;
+    border-radius: 32px;
+    color: #FFFFFF;
   }

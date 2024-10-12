@@ -19,13 +19,9 @@ const Filters = () => {
     bathroom: !!searchParams.get("bathroom"),
   });
 
-  console.log("Initial filters:", filters);
-  console.log("Initial selected vehicle type:", selected);
-
   const onChangeFilters = (name) => {
     setFilters((prev) => {
       const newFilters = { ...prev, [name]: !prev[name] };
-      console.log("Updated filters:", newFilters);
       return newFilters;
     });
   };
@@ -34,7 +30,6 @@ const Filters = () => {
     const value = e.target.value;
     setSelected((prev) => {
       const newSelected = prev === value ? null : value;
-      console.log("Updated selected vehicle type:", newSelected);
       return newSelected;
     });
   };
@@ -46,13 +41,24 @@ const Filters = () => {
     formData.forEach((value, key) => {
       if (value.trim()) data[key] = value;
     });
-    console.log("Data to set in search params:", data);
+
     // Добавляем фильтры в параметры
     Object.keys(filters).forEach((key) => {
       if (filters[key]) data[key] = true;
     });
 
-    console.log("Data to set in search params:", data);
+    // Проверяем фильтрацию по типу коробки передач
+    const transmissionSelected = filters.automatic; // Проверка, выбрана ли автоматическая коробка
+    if (transmissionSelected) {
+      data.transmission = "automatic"; // если выбрана автоматическая
+    } else if (!transmissionSelected && !filters.manual) {
+      // Если не выбраны ни автоматическая, ни механическая
+      // не добавляем параметр transmission в query
+    } else if (!transmissionSelected && filters.manual) {
+      // Если выбрана только механическая, добавляем её
+      data.transmission = "manual";
+    }
+
     setSearchParams(data);
   };
 
