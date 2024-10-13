@@ -25,7 +25,7 @@
     transition: border-color var(--transition-setting);
   }
   .input:checked + .button {
-    border-color: var(--color-gold);
+    border-color: var(--color-button-hover);
   }
   .icon {
     margin-bottom: 8px;
