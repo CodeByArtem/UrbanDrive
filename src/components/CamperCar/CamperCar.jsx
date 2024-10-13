@@ -20,7 +20,7 @@ const CamperCart = ({ camper, liked = true }) => {
   const categories = getCategories(camper);
 
   const handleOpenDetails = useCallback(() => {
-    console.log("Camper ID:", camper.id);
+
     navigate(`/catalog/${camper.id}`);
   }, [camper.id, navigate]);
 
