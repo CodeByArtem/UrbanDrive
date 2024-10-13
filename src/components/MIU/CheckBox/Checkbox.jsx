@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import css from "./Checkbox.module.css";
+import css from "./CheckBox.module.css";
 
 const Checkbox = ({
   width,
