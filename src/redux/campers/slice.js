@@ -33,7 +33,10 @@ const campersSlice = createSlice({
       })
       .addCase(getMoreCampers.fulfilled, (state, action) => {
         state.isFetching = false;
-        state.data = [...state.data, ...action.payload]; 
+     
+        if (action.payload && action.payload.items) {
+          state.data = [...state.data, ...action.payload.items]; 
+        } 
       })
       
       .addCase(getMoreCampers.rejected, (state, action) => {
