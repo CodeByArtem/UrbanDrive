@@ -69,7 +69,7 @@ const Filters = () => {
         <LocationInput
           defaultValue={searchParams.get("location") || ""}
           name="location"
-          placeholder="Kyiv, Ukraine"
+          placeholder="City"
         />
       </fieldset>
       <fieldset className={css.fieldset}>

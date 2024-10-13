@@ -88,3 +88,12 @@
     border-radius: 32px;
     color: #FFFFFF;
   }
+  .dayList button.pastDate {
+    color: #b0b0b0; /* Цвет текста для прошедших дат */
+    background-color: transparent; /* Прозрачный фон */
+    cursor: not-allowed; /* Указатель на запрет */
+}
+
+.dayList button.pastDate:hover {
+    background-color: transparent; /* Никакого фона при наведении */
+}

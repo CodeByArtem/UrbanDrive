@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-
-
 import css from "./Catalog.module.css";
 import { useSearchParams } from "react-router-dom";
 import { selectCampers, selectError, selectIsFetching, selectIsNextPage } from "../../redux/campers/selectors";
@@ -10,7 +8,6 @@ import { getCampers, getMoreCampers } from "../../redux/campers/operations";
 import CatalogList from "../CatalogList/CatalogList";
 import Message from "../MIU/Message/Message";
 import Loader from "../Loader/Loader";
-
 
 const Catalog = () => {
   const dispatch = useDispatch();
@@ -41,18 +38,15 @@ const Catalog = () => {
     });
     setPage(nextPage);
   };
-  const slicedDate = campers ? campers.slice(0, 4 * page) : [];
 
-  const isEmpty = campers?.length === 0 && !isLoading;
-  const isShowCalendar = !errorMessage && !!slicedDate.length;
-  const isShowButton =
-    !isLoading &&
-    !errorMessage &&
-    (isNextPage || slicedDate.length !== campers?.length);
+  const slicedData = campers ? campers.slice(0, 4 * page) : [];
+  const isEmpty = !campers || (campers.length === 0 && !isLoading);
+  const isShowCalendar = !errorMessage && slicedData.length > 0;
+  const isShowButton = !isLoading && !errorMessage && (isNextPage || slicedData.length !== (campers?.length || 0));
 
   return (
     <section className={css.container}>
-      {isShowCalendar && <CatalogList campers={slicedDate} />}
+      {isShowCalendar && <CatalogList campers={slicedData} />}
       {errorMessage && <Message>{errorMessage}</Message>}
       {isEmpty && <Message>Campers not found</Message>}
       {isLoading && <Loader />}

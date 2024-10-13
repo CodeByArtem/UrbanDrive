@@ -1,11 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 import icons from "../../assets/iconss.svg";
-
 import css from "./Calendar.module.css";
 import clsx from "clsx";
 import { daysOfWeek, months } from "../../helpers/constants";
 import { generateCalendar, isSameDate } from "../../helpers/calendar";
-
 
 const Calendar = ({ date: currentDate, handleSetDate, onClose }) => {
   const date = currentDate || new Date();
@@ -19,15 +17,11 @@ const Calendar = ({ date: currentDate, handleSetDate, onClose }) => {
   }, [onClose]);
 
   const handlePrev = () => {
-    setSelectedDate(
-      (prev) => new Date(prev.getFullYear(), prev.getMonth() - 1)
-    );
+    setSelectedDate((prev) => new Date(prev.getFullYear(), prev.getMonth() - 1));
   };
 
   const handleNext = () => {
-    setSelectedDate(
-      (prev) => new Date(prev.getFullYear(), prev.getMonth() + 1)
-    );
+    setSelectedDate((prev) => new Date(prev.getFullYear(), prev.getMonth() + 1));
   };
 
   const setDate = (date) => {
@@ -38,6 +32,13 @@ const Calendar = ({ date: currentDate, handleSetDate, onClose }) => {
   const currentMonth = months[selectedDate.getMonth()];
   const currentYear = selectedDate.getFullYear();
   const days = generateCalendar(selectedDate.getMonth() + 1, currentYear);
+
+  const isPastDate = (day) => {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    return day < today;
+  };
+
   return (
     <div
       className={css.container}
@@ -60,7 +61,7 @@ const Calendar = ({ date: currentDate, handleSetDate, onClose }) => {
           onClick={handleNext}
           className={css.button}
           type="button"
-          aria-label="previous month"
+          aria-label="next month"
         >
           <svg className={clsx(css.icon, css.next)} width={24} height={24}>
             <use xlinkHref={icons + "#icon-arrow"}></use>
@@ -72,22 +73,26 @@ const Calendar = ({ date: currentDate, handleSetDate, onClose }) => {
           <li key={day}>{day}</li>
         ))}
       </ul>
+      
       <ul className={css.dayList}>
-        {days.map((day, index) => (
-          <li key={index}>
-            <button
-              className={clsx({
-                [css.selected]: isSameDate(date, day),
-                [css.notThisMonth]: selectedDate.getMonth() !== day.getMonth(),
-              })}
-              type="button"
-              onClick={() => setDate(day)}
-            >
-              {day.getDate()}
-            </button>
-          </li>
-        ))}
-      </ul>
+  {days.map((day, index) => (
+    <li key={index}>
+      <button
+        className={clsx({
+          [css.pastDate]: isPastDate(day), // Сначала проверяем, является ли дата прошедшей
+          [css.selected]: isSameDate(date, day),
+          [css.notThisMonth]: selectedDate.getMonth() !== day.getMonth(),
+        })}
+        type="button"
+        onClick={() => !isPastDate(day) && setDate(day)} // Дата устанавливается только если она не прошедшая
+        disabled={isPastDate(day)} // Дизаблим кнопки для прошедших дат
+      >
+        {day.getDate()}
+      </button>
+    </li>
+  ))}
+</ul>
+
     </div>
   );
 };

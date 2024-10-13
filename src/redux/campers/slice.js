@@ -20,7 +20,7 @@ const campersSlice = createSlice({
       })
       .addCase(getCampers.rejected, (state, action) => {
         state.isLoading = false; // Остановка флага загрузки
-        state.error = action.payload; // Сохранение ошибки
+        state.error = action.payload || action.error.message; // Сохранение ошибки
         state.nextPage = false; // Сброс флага следующей страницы
       })
       // Обработка getMoreCampers
@@ -35,7 +35,7 @@ const campersSlice = createSlice({
       })
       .addCase(getMoreCampers.rejected, (state, action) => {
         state.isLoading = false; // Остановка флага загрузки
-        state.error = action.payload; // Сохранение ошибки
+        state.error = action.payload || action.error.message; // Сохранение ошибки
         state.nextPage = false; // Сброс флага следующей страницы
       });
   },

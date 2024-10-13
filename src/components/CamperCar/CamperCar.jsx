@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom"; // Импортируем useNavigate
+import { useNavigate } from "react-router-dom";
 import clsx from "clsx";
 
 import { setFavorite } from "../../redux/favorites/slice";
@@ -15,32 +15,42 @@ import Location from "../MIU/Location/Location";
 
 const CamperCart = ({ camper, liked = true }) => {
   const dispatch = useDispatch();
-  const navigate = useNavigate(); // Инициализируем useNavigate
-  
-  const categories = getCategories(camper); 
+  const navigate = useNavigate();
+
+  const categories = getCategories(camper);
+
   const handleOpenDetails = useCallback(() => {
-    console.log("Camper ID:", camper.id); // Проверка ID
+    console.log("Camper ID:", camper.id);
     navigate(`/catalog/${camper.id}`);
   }, [camper.id, navigate]);
-  
 
-  const handleLike = (camper) => {
+  const handleLike = () => {
+    // Используйте camper._id, если в ваших данных есть поле _id
     dispatch(setFavorite(camper));
+    console.log(camper);
+     // Убедитесь, что вы передаете нужный объект
   };
+
+  const hasGallery = camper.gallery && camper.gallery.length > 0;
+  const reviewsCount = camper.reviews ? camper.reviews.length : 0;
 
   return (
     <div className={css.container}>
-      <CamperImage
-        src={camper.gallery[0].thumb}
-        alt="Camper photo"
-      />
+      {hasGallery ? (
+        <CamperImage
+          src={camper.gallery[0].thumb}
+          alt="Camper photo"
+        />
+      ) : (
+        <div className={css.noImage}>No image available</div>
+      )}
       <div className={css.info}>
         <div className={css.infoHeader}>
           <h2 className={css.name}>{camper.name}</h2>
           <p className={css.price}>{formatRentPrice(camper.price)}</p>
           <button
             className={css.buttonIcon}
-            onClick={() => handleLike(camper)}
+            onClick={handleLike} // Убрали camper из аргументов, он уже доступен в замыкании
             aria-label="Like button"
           >
             <svg
@@ -48,18 +58,18 @@ const CamperCart = ({ camper, liked = true }) => {
               width={24}
               height={24}
             >
-              <use xlinkHref={icons + "#icon-unliked"}></use>
+              <use xlinkHref={icons + (liked ? "#icon-liked" : "#icon-unliked")}></use>
             </svg>
           </button>
         </div>
         <div className={css.infoRating}>
-          <Rating rating={camper.rating} countReviews={camper.reviews.length} />
+          <Rating rating={camper.rating} countReviews={reviewsCount} />
           <Location>{camper.location}</Location>
         </div>
         <p className={css.description}>{camper.description}</p>
         <ul className={css.categoryList}>
           {categories.map(({ iconName, text, styles }, i) => (
-            <li key={i}>
+            <li key={`${iconName}-${text}-${i}`}>
               <Category iconPath={icons + "#icon-" + iconName} styles={styles}>
                 {text}
               </Category>
@@ -68,7 +78,7 @@ const CamperCart = ({ camper, liked = true }) => {
         </ul>
         <LoadButton
           type="button"
-          onClick={handleOpenDetails} // Обновленный обработчик
+          onClick={handleOpenDetails}
           style={{ minWidth: "166px" }}
         >
           Show more

@@ -6,6 +6,9 @@ import CamperCar from "../CamperCar/CamperCar";
 const CatalogList = ({ campers }) => {
   const favorites = useSelector(selectFavorites);
 
+  // Логирование для проверки данных
+  console.log(campers);
+
   return (
     <ul className={css.list}>
       {campers.map((camper) => (
