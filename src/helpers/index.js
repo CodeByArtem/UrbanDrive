@@ -22,9 +22,9 @@ export const getCategories = (camper) => {
     microwave, gas, water, refrigerator
   } = camper;
 
-  if (transmission) addToResult(result, "automatic", transmission, { fill: "transparent", stroke: "#101828" });
+  if (transmission) addToResult(result, "automatic", transmission,);
   if (engine) addToResult(result, "petrol", engine);
-  if (kitchen) addToResult(result, "kitchen", "Kitchen", { fill: "transparent", stroke: "#101828" });
+  if (kitchen) addToResult(result, "kitchen", "Kitchen", );
   if (AC) addToResult(result, "ac", "AC");
   if (bathroom) addToResult(result, "bathroom", "Bathroom");
   if (TV) addToResult(result, "tv", "TV");
