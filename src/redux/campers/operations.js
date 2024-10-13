@@ -8,11 +8,10 @@ export const getCampers = createAsyncThunk(
   async (params, thunkAPI) => {
     try {
       const res = await fetchCampers(params);
-      // Проверьте, возвращает ли API данные в нужной структуре
       if (!res.data || !Array.isArray(res.data.items)) {
         return thunkAPI.rejectWithValue("Invalid data format");
       }
-      return res.data; // Предполагаем, что data содержит { items: [], total: 0 }
+      return res.data;
     } catch (err) {
       const { response } = err;
       if (response?.status === 404) return thunkAPI.rejectWithValue([]);
@@ -26,11 +25,10 @@ export const getMoreCampers = createAsyncThunk(
   async (params, thunkAPI) => {
     try {
       const res = await fetchCampers(params);
-      // Проверьте, возвращает ли API данные в нужной структуре
       if (!res.data || !Array.isArray(res.data.items)) {
         return thunkAPI.rejectWithValue("Invalid data format");
       }
-      return res.data; // Предполагаем, что data содержит { items: [], total: 0 }
+      return res.data;
     } catch (err) {
       return thunkAPI.rejectWithValue(err);
     }

@@ -23,18 +23,18 @@ const CamperDetails = () => {
   const [loading, setLoading] = useState(true);
   const [selectedNav, setSelectedNav] = useState(navList[0]);
 
-  const errorMessage = useSelector(selectError); // Получаем сообщение об ошибке из Redux
+  const errorMessage = useSelector(selectError);
 
   useEffect(() => {
     const getCamperDetails = async () => {
-      setLoading(true); 
+      setLoading(true);
       try {
         const data = await fetchCamper(id);
         setCamper(data);
       } catch (err) {
-        console.error(err.message); // Логируем ошибку в консоль
+        console.error(err.message);
       } finally {
-        setLoading(false); 
+        setLoading(false);
       }
     };
 
@@ -45,9 +45,8 @@ const CamperDetails = () => {
     setSelectedNav(e.target.value);
   };
 
-  if (loading) return <Loader />; // Показываем лоадер
-  if (errorMessage) return <p>Error: {errorMessage}</p>; // Показываем ошибку из Redux
-
+  if (loading) return <Loader />;
+  if (errorMessage) return <p>Error: {errorMessage}</p>;
   if (!camper) return <p>No camper found.</p>;
 
   return (

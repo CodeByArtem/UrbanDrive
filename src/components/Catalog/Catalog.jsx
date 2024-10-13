@@ -33,7 +33,7 @@ const Catalog = () => {
     const nextPage = page + 1;
     const params = getSearchParams(searchParams);
     setIsLoadingFirst(isFetchingData);
-    dispatch(getMoreCampers({ page: nextPage + 1, ...params })).then(() => {
+    dispatch(getMoreCampers({ page: nextPage, ...params })).then(() => {
       setIsLoadingFirst(false);
     });
     setPage(nextPage);

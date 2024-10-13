@@ -1,122 +1,122 @@
-.container{
-  padding-top: 48px;
+.container {
+  padding: 48px 64px 80px;
 }
 
-  .name {
-    font-family: "Inter", sans-serif ;
-    font-weight: 600;
-    font-size: 24px;
-    color:  #101828;
-    width: 128px;
-    height: 32px;
-    
-    line-height: 1.25;
-    padding-right: 40px;
-    margin-bottom: 8px;
-  }
-  
-  .rating {
-    display: flex;
-    gap: 16px;
-    margin-bottom: 16px;
-  }
-  .price {
-    font-weight: 600;
-    font-size: 24px;
-    line-height: 1.25;
-    margin-bottom: 24px;
-  }
-  .scrollWrapper {
-    display: flex;
-    flex-direction: column;
-    max-height: 100%;
-    overflow: hidden;
-  }
-  .contentWrapper {
-    flex: 1;
-    overflow-y: auto;
-  }
-  .imageList {
-    display: flex;
-    gap: 16px;
-    overflow-x: auto;
-    margin-bottom: 24px;
-  }
-  .description {
-    color: var(--color-font-second);
-    padding-bottom: 60px;
-    padding-top: 28px;
-    display: flex;
-    justify-content: center;
-  }
-  
-  .navList {
-    width: 100%;
-    display: flex;
-    gap: 40px;
-    border-bottom: 1px solid rgba(16, 24, 40, 0.2);
-    padding-bottom: 24px;
-  }
-  
-  .footerWrapper {
-    display: flex;
-    gap: 24px;
-    justify-content: space-between;
-    padding-top: 44px;
-    padding-bottom: 80px;
-  }
-  
-  /* Close button */
-  .closeButton {
-    position: absolute;
-    top: 40px;
-    right: 40px;
-    width: 32px;
-    height: 32px;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    border-radius: 16px;
-    padding: 8px;
-    transition: background-color var(--transition-setting);
-    
-  }
-  
-  .closeButton::before,
-  .closeButton::after {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 20px;
-    height: 3px;
-    border-radius: 1.5px;
-    background-color: #333;
-    transform-origin: center;
-  }
-  
-  .closeButton::before {
-    transform: translate(-50%, -50%) rotate(45deg);
-  }
-  
-  .closeButton::after {
-    transform: translate(-50%, -50%) rotate(-45deg);
-  }
-  
-  .closeButton:hover {
-    background-color: var(--color-second-bg);
-  }
+.name {
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 24px;
+  color: #101828;
+  width: 128px;
+  height: 32px;
+  line-height: 1.25;
+  padding-right: 40px;
+  margin-bottom: 8px;
+}
+
+.rating {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.price {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1.25;
+  margin-bottom: 24px;
+}
+
+.scrollWrapper {
+  display: flex;
+  flex-direction: column;
+  max-height: 100%;
+  overflow: hidden;
+}
+
+.contentWrapper {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.imageList {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  margin-bottom: 24px;
+}
+
+.description {
+  color: var(--color-font-second);
+  padding-bottom: 60px;
+  padding-top: 28px;
+  display: flex;
+  justify-content: center;
+}
+
+.navList {
+  width: 100%;
+  display: flex;
+  gap: 40px;
+  border-bottom: 1px solid rgba(16, 24, 40, 0.2);
+  padding-bottom: 24px;
+}
+
+.footerWrapper {
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+  padding-top: 44px;
+  padding-bottom: 80px;
+}
 
 
-  .imageGallery {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 48px;
-    justify-content: center;
-    
-  }
-  
-  .imageGallery img {
-    max-width: 100%; /* Адаптивность */
-  
-  }
+.closeButton {
+  position: absolute;
+  top: 40px;
+  right: 40px;
+  width: 32px;
+  height: 32px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  border-radius: 16px;
+  padding: 8px;
+  transition: background-color var(--transition-setting);
+}
+
+.closeButton::before,
+.closeButton::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 3px;
+  border-radius: 1.5px;
+  background-color: #333;
+  transform-origin: center;
+}
+
+.closeButton::before {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.closeButton::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.closeButton:hover {
+  background-color: var(--color-second-bg);
+}
+
+.imageGallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 48px;
+  justify-content: center;
+}
+
+.imageGallery img {
+  max-width: 100%; 
+}

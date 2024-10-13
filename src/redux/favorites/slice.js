@@ -6,15 +6,14 @@ const favoritesSlice = createSlice({
   initialState: FAVORITES_INI_STATE,
   reducers: {
     setFavorite(state, action) {
-      const { id } = action.payload; // предполагаем, что используется _id
+      const { id } = action.payload; 
 
       const index = state.data.findIndex((item) => item.id === id);
+      
       if (index !== -1) {
-        // Если элемент уже в избранном, удаляем его
-        state.data.splice(index, 1);
+        state.data = state.data.filter((item) => item.id !== id);
       } else {
-        // Если элемент не в избранном, добавляем его
-        state.data.push(action.payload);
+        state.data = [...state.data, action.payload]; 
       }
     },
   },

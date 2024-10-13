@@ -8,26 +8,23 @@ const searchParamsName = [
 export const getSearchParams = (searchParams) => {
   const currentSearchParams = {};
 
-  // Проверка стандартных фильтров
   searchParamsName.forEach(({ name, searchKey }) => {
     const value = searchParams.get(name);
     if (value) {
-      currentSearchParams[searchKey] = true; // Устанавливаем как true, если параметр присутствует
+      currentSearchParams[searchKey] = true;
     }
   });
 
   const location = searchParams.get("location");
-  const transmission = searchParams.get("transmission"); // Получаем значение transmission
+  const transmission = searchParams.get("transmission");
   const form = searchParams.get("vehicleTypes");
 
-  // Обработка параметров
   if (location && location.trim()) {
     currentSearchParams.location = location.trim();
   }
   
-  // Обработка transmission для автоматической и механической коробки передач
   if (transmission) {
-    currentSearchParams.transmission = transmission; // Устанавливаем transmission как есть
+    currentSearchParams.transmission = transmission;
   }
 
   if (form) {

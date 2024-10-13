@@ -1,99 +1,102 @@
 .container {
-    position: absolute;
-    right: 0;
-    top: -10px;
-    transform: translateY(-100%);
-    z-index: 10;
-    width: 325px;
-    padding: 16px;
-  
-    border-radius: 12px;
-    border: 1px solid rgba(16, 24, 40, 0.2);
-    background-color: var(--color-white);
-  }
-  .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-  }
-  .button {
-    width: 24px;
-    height: 24px;
-  
-    padding: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: transparent;
-    border: none;
-    border-radius: 50%;
-  
-    transition: background-color var(--transition-setting);
-  }
-  .button:hover {
-    background-color: var(--color-second-bg);
-  }
-  .prev {
-    transform: rotate(180deg);
-  }
+  position: absolute;
+  right: 0;
+  top: -10px;
+  transform: translateY(-100%);
+  z-index: 10;
+  width: 325px;
+  padding: 16px;
+  border-radius: 12px;
+  border: 1px solid rgba(16, 24, 40, 0.2);
+  background-color: var(--color-white);
+}
 
-  .monthYear {
-    font-weight: 600;
-    font-size: 16px;
-    line-height: 1.2;
-  }
-  .weekList {
-    width: 287px;
-    margin: 0 auto 20px;
-    display: flex;
-    justify-content: space-around;
-  
-    font-weight: 600;
-    font-size: 12px;
-    line-height: 1.2;
-    color: var(--color-font-second);
-    text-transform: uppercase;
-  }
-  
-  .dayList {
-    display: flex;
-    flex-wrap: wrap;
-  }
-  .dayList button {
-    width: 41px;
-    height: 32px;
-    padding: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: transparent;
-    border: none;
-    color: inherit;
-    font-weight: inherit;
-  
-    transition: color var(--transition-setting),
-      font-weight var(--transition-setting);
-  }
-  
-  .dayList button:hover {
-    background-color: var(--color-second-bg);
-  }
-  .dayList button.notThisMonth {
-    color: var(--color-font-second);
-  }
-  .dayList button.selected {
-    background: #475467;
-    font-weight: 500;
-    border-radius: 32px;
-    color: #FFFFFF;
-  }
-  .dayList button.pastDate {
-    color: #b0b0b0; /* Цвет текста для прошедших дат */
-    background-color: transparent; /* Прозрачный фон */
-    cursor: not-allowed; /* Указатель на запрет */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.button {
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  border: none;
+  border-radius: 50%;
+  transition: background-color var(--transition-setting);
+}
+
+.button:hover {
+  background-color: var(--color-second-bg);
+}
+
+.prev {
+  transform: rotate(180deg);
+}
+
+.monthYear {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.2;
+}
+
+.weekList {
+  width: 287px;
+  margin: 0 auto 20px;
+  display: flex;
+  justify-content: space-around;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 1.2;
+  color: var(--color-font-second);
+  text-transform: uppercase;
+}
+
+.dayList {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.dayList button {
+  width: 41px;
+  height: 32px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  border: none;
+  color: inherit;
+  font-weight: inherit;
+  transition: color var(--transition-setting), font-weight var(--transition-setting);
+}
+
+.dayList button:hover {
+  background-color: var(--color-second-bg);
+}
+
+.dayList button.notThisMonth {
+  color: var(--color-font-second);
+}
+
+.dayList button.selected {
+  background: #475467;
+  font-weight: 500;
+  border-radius: 32px;
+  color: #FFFFFF;
+}
+
+.dayList button.pastDate {
+  color: #b0b0b0;
+  background-color: transparent;
+  cursor: not-allowed;
 }
 
 .dayList button.pastDate:hover {
-    background-color: transparent; /* Никакого фона при наведении */
+  background-color: transparent;
 }

@@ -2,23 +2,23 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh; /* или любое другое значение в зависимости от вашего макета */
-  overflow: hidden; /* Скрыть элементы, выходящие за пределы контейнера */
+  height: 100vh;
+  overflow: hidden;
 }
 
 .loader {
-  width: 100px; /* Настройте размер лоадера по необходимости */
-  animation: move 2s linear infinite; /* Анимация движения */
+  width: 100px;
+  animation: move 2s linear infinite;
 }
 
 @keyframes move {
   0% {
-    transform: translateX(-100px); /* Начальная позиция за пределами слева */
+    transform: translateX(-100px);
   }
   50% {
-    transform: translateX(0); /* Конечная позиция в центре */
+    transform: translateX(0);
   }
   100% {
-    transform: translateX(100px); /* Возвращение за пределы справа */
+    transform: translateX(100px);
   }
 }

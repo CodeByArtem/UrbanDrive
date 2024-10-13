@@ -1,6 +1,8 @@
 .list {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
   padding-bottom: 32px;
-    gap: 32px;
-  }
+  gap: 32px;
+  padding-left: 64px;
+width: 888px;
+}

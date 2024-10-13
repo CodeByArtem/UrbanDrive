@@ -1,21 +1,16 @@
 import icons from "../../assets/iconss.svg";
 import { getAllDetails, getCategories } from "../../helpers";
- // Импортируем getAllDetails
 import Category from "../MIU/Category/Category";
 import css from "./Features.module.css";
 
 const Features = ({ camper }) => {
-  console.log("Camper data received:", camper);
-
-  // Проверяем, что camper определен
   if (!camper) {
-    return <p>Camper data is not available.</p>; // Сообщение, если данные недоступны
+    return <p>Camper data is not available.</p>;
   }
-  console.log("Camper data before getting details:", camper);
+
   const categories = getCategories(camper);
-  console.log('Categories:', categories);
   const { vehicle } = getAllDetails(camper);
-  console.log('Vehicle details:', vehicle);
+
   return (
     <div className={css.container}>
       <ul className={css.categoryList}>
@@ -28,10 +23,10 @@ const Features = ({ camper }) => {
             </li>
           ))
         ) : (
-          <p>No categories available.</p> // Сообщение, если категории отсутствуют
+          <p>No categories available.</p>
         )}
       </ul>
-      
+
       <h3 className={css.vehicleTitle}>Vehicle details</h3>
       <ul className={css.vehicleList}>
         {vehicle.length > 0 ? (
@@ -42,7 +37,7 @@ const Features = ({ camper }) => {
             </li>
           ))
         ) : (
-          <p>No vehicle details available.</p> // Сообщение, если детали отсутствуют
+          <p>No vehicle details available.</p>
         )}
       </ul>
     </div>

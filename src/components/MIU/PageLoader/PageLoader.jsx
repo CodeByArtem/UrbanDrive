@@ -1,9 +1,11 @@
+
+import Loader from "../../Loader/Loader";
 import css from "./PageLoader.module.css";
 
 const PageLoader = () => {
   return (
     <div className={css.container}>
-      <div className={css.loader}></div>
+    <Loader/>
     </div>
   );
 };

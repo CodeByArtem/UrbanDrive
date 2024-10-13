@@ -3,5 +3,5 @@ export const CATALOG_INITIAL_STATE = {
   isLoading: false,
   error: null,
   nextPage: true,
-  total: 0, // Добавлено для хранения общего количества кемперов
+  total: 0, 
 };

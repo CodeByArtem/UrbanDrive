@@ -1,7 +1,6 @@
 
 import  ReactDOM  from 'react-dom/client'
 
-import { ModalProvider } from './components/contex/ModalProvider';
 import { PersistGate } from 'redux-persist/integration/react';
 import { Provider } from 'react-redux';
 import App from './App'
@@ -17,9 +16,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <BrowserRouter>
-          <ModalProvider>
+    
             <App />
-          </ModalProvider>
+   
         </BrowserRouter>
       </PersistGate>
     </Provider>

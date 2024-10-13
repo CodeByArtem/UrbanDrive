@@ -25,10 +25,8 @@ const CamperCart = ({ camper, liked = true }) => {
   }, [camper.id, navigate]);
 
   const handleLike = () => {
-    // Используйте camper._id, если в ваших данных есть поле _id
     dispatch(setFavorite(camper));
     console.log(camper);
-     // Убедитесь, что вы передаете нужный объект
   };
 
   const hasGallery = camper.gallery && camper.gallery.length > 0;
@@ -50,7 +48,7 @@ const CamperCart = ({ camper, liked = true }) => {
           <p className={css.price}>{formatRentPrice(camper.price)}</p>
           <button
             className={css.buttonIcon}
-            onClick={handleLike} // Убрали camper из аргументов, он уже доступен в замыкании
+            onClick={handleLike}
             aria-label="Like button"
           >
             <svg

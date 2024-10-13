@@ -7,85 +7,32 @@ const formatMeasurement = (value) => {
   return value.replace(/(\d)([a-zA-Z])/g, "$1 $2");
 };
 
+const addToResult = (result, iconName, text, styles = {}) => {
+  result.push({
+    iconName,
+    text: capitalizeFirstLetter(text),
+    styles,
+  });
+};
+
 export const getCategories = (camper) => {
   const result = [];
-  const {  transmission, engine, kitchen, AC, bathroom, TV, radio, } = camper;
-  // microwave, gas, water,  refrigerator  
-  if (transmission) {
-    result.push({
-      iconName: "automatic",
-      text: capitalizeFirstLetter(transmission),
-      styles: { fill: "transparent", stroke: "#101828" },
-    });
-  }
-  if (engine) {
-    result.push({
-      iconName: "petrol",
-      text: capitalizeFirstLetter(engine),
-      styles: {},
-    });
-  }
-  if (kitchen) {
-    result.push({
-      iconName: "kitchen",
-      text: "Kitchen",
-      styles: { fill: "transparent", stroke: "#101828" },
-    });
-  }
-  if (AC) {
-    result.push({ iconName: "ac", text: "AC", styles: {} });
-  }
-  if (bathroom) {
-    result.push({
-      iconName: "bathroom",
-      text: "Bathroom",
-      styles: {},
-    });
-  }
-  if (TV) {
-    result.push({
-      iconName: "tv",
-      text: "TV",
-      styles: {},
-    });
-  }
-  if (radio) {
-    result.push({
-      iconName: "radio",
-      text: "Radio",
-      styles: {},
-    });
-  }
-  // if (microwave) {
-  //   result.push({
-  //     iconName: "microwave",
-  //     text: "Microwave",
-  //     styles: { fill: "transparent", stroke: "#101828" }
-      
-  //   });
-  // }
-  // if (gas) {
-  //   result.push({
-  //     iconName: "gas",
-  //     text: "Gas",
-    
-  //   });
-  // }
-  // if (water) {
-  //   result.push({
-  //     iconName: "water",
-  //     text: "Water",
-  //     styles: { fill: "transparent", stroke: "#101828" }
-   
-  //   });
-  // }
-  // if ( refrigerator) {
-  //   result.push({
-  //     iconName: "freezer",
-  //     text: "refrigerator",
-  //     styles: { fill: "transparent", stroke: "#101828" }
-  //   });
-  // }
+  const {
+    transmission, engine, kitchen, AC, bathroom, TV, radio,
+    microwave, gas, water, refrigerator
+  } = camper;
+
+  if (transmission) addToResult(result, "automatic", transmission, { fill: "transparent", stroke: "#101828" });
+  if (engine) addToResult(result, "petrol", engine);
+  if (kitchen) addToResult(result, "kitchen", "Kitchen", { fill: "transparent", stroke: "#101828" });
+  if (AC) addToResult(result, "ac", "AC");
+  if (bathroom) addToResult(result, "bathroom", "Bathroom");
+  if (TV) addToResult(result, "tv", "TV");
+  if (radio) addToResult(result, "radio", "Radio");
+  if (microwave) addToResult(result, "microwave", "Microwave", { fill: "transparent", stroke: "#101828" });
+  if (gas) addToResult(result, "gas", "Gas");
+  if (water) addToResult(result, "water", "Water", { fill: "transparent", stroke: "#101828" });
+  if (refrigerator) addToResult(result, "freezer", "Refrigerator", { fill: "transparent", stroke: "#101828" });
 
   return result;
 };
@@ -104,53 +51,16 @@ export const getAllDetails = (camper) => {
     { title: "Tank", value: formatMeasurement(camper.tank) },
     { title: "Consumption", value: camper.consumption },
   ];
+
   const details = [];
+  const { bathroom, TV, radio, microwave, gas, water } = camper;
 
-  const { bathroom, TV, radio, microwave, gas, water,  } = camper;
-
-  if (bathroom) {
-    details.push({
-      iconName: "toilet",
-      text: "Bathroom",
-      styles: {},
-    });
-  }
-  if (TV) {
-    details.push({
-      iconName: "tv",
-      text: "TV",
-      styles,
-    });
-  }
-  if (radio) {
-    details.push({
-      iconName: "radio",
-      text: "Radio",
-      styles,
-    });
-  }
-  if (microwave) {
-    details.push({
-      iconName: "microwave",
-      text: "Microwave",
-      styles,
-    });
-  }
-  if (gas) {
-    details.push({
-      iconName: "gas",
-      text: "Gas",
-      styles: {},
-    });
-  }
-  if (water) {
-    details.push({
-      iconName: "water",
-      text: "Water",
-      styles,
-    });
-  }
-
+  if (bathroom) addToResult(details, "toilet", "Bathroom");
+  if (TV) addToResult(details, "tv", "TV", styles);
+  if (radio) addToResult(details, "radio", "Radio", styles);
+  if (microwave) addToResult(details, "microwave", "Microwave", styles);
+  if (gas) addToResult(details, "gas", "Gas");
+  if (water) addToResult(details, "water", "Water", styles);
 
   return { vehicle, details };
 };

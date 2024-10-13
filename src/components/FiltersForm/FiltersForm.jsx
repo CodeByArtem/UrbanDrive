@@ -42,20 +42,14 @@ const Filters = () => {
       if (value.trim()) data[key] = value;
     });
 
-    // Добавляем фильтры в параметры
     Object.keys(filters).forEach((key) => {
       if (filters[key]) data[key] = true;
     });
 
-    // Проверяем фильтрацию по типу коробки передач
-    const transmissionSelected = filters.automatic; // Проверка, выбрана ли автоматическая коробка
+    const transmissionSelected = filters.automatic;
     if (transmissionSelected) {
-      data.transmission = "automatic"; // если выбрана автоматическая
-    } else if (!transmissionSelected && !filters.manual) {
-      // Если не выбраны ни автоматическая, ни механическая
-      // не добавляем параметр transmission в query
+      data.transmission = "automatic";
     } else if (!transmissionSelected && filters.manual) {
-      // Если выбрана только механическая, добавляем её
       data.transmission = "manual";
     }
 

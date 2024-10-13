@@ -11,27 +11,16 @@ import LoadButton from "../MIU/LoadButton/LoadButton";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-// Добавляем функцию для проверки, является ли дата будущей
 const isFutureDate = (date) => {
   const today = new Date();
-  today.setHours(0, 0, 0, 0); // Устанавливаем часы, минуты и секунды в 0 для сравнения только по дате
-  return new Date(date) >= today; // Возвращает true, если дата не в прошлом
+  today.setHours(0, 0, 0, 0);
+  return new Date(date) >= today;
 };
 
 const validationSchema = yup.object({
-  email: yup
-    .string()
-    .email("Enter a valid email address")
-    .required("Email is required"),
-  name: yup
-    .string()
-    .min(2, "Must be at least 2 characters long")
-    .max(25, "Must be no more than 25 characters")
-    .required("Name is required"),
-  date: yup
-    .string()
-    .test("is-future", "Date cannot be in the past", (value) => isFutureDate(value)) // Проверка на будущее
-    .required("Date is required"),
+  email: yup.string().email("Enter a valid email address").required("Email is required"),
+  name: yup.string().min(2, "Must be at least 2 characters long").max(25, "Must be no more than 25 characters").required("Name is required"),
+  date: yup.string().test("is-future", "Date cannot be in the past", (value) => isFutureDate(value)).required("Date is required"),
 });
 
 const BookForm = () => {
@@ -44,47 +33,37 @@ const BookForm = () => {
     setValue,
     setError,
     formState: { errors },
-  } = useForm({
-    resolver: yupResolver(validationSchema),
-  });
+  } = useForm({ resolver: yupResolver(validationSchema) });
 
   const onSubmit = () => {
-    toast.success("Бронирование успешно!");
+    toast.success("Booking successful!");
     setTimeout(() => {
       window.location.reload();
-    }, 2000); 
+    }, 2000);
   };
 
-  const handleSetDate = (date) => {
-    setDate(date);
-    setValue("date", formatDate(date));
+  const handleSetDate = (selectedDate) => {
+    setDate(selectedDate);
+    setValue("date", formatDate(selectedDate));
     setError("date", null);
   };
 
-  const handleCloseCalendar = () => {
-    setIsCalendarOpen(false);
-  };
-
-  const renderCalendar = ({ field }) => {
-    return (
-      <BookInput
-        value={date ? formatDate(date) : ""}
-        field={field}
-        type="text"
-        placeholder="Booking date*"
-        iconPath={icons + "#icon-calendar"}
-        style={{ cursor: "pointer", marginBottom: 0, pointerEvents: "none" }}
-        error={errors.date}
-      />
-    );
-  };
+  const renderCalendar = ({ field }) => (
+    <BookInput
+      value={date ? formatDate(date) : ""}
+      field={field}
+      type="text"
+      placeholder="Booking date*"
+      iconPath={`${icons}#icon-calendar`}
+      style={{ cursor: "pointer", marginBottom: 0, pointerEvents: "none" }}
+      error={errors.date}
+    />
+  );
 
   return (
     <div className={css.container}>
       <h3 className={css.title}>Book your campervan now</h3>
-      <p className={css.text}>
-        Stay connected! We are always ready to help you.
-      </p>
+      <p className={css.text}>Stay connected! We are always ready to help you.</p>
       <form className={css.form} onSubmit={handleSubmit(onSubmit)}>
         <BookInput
           register={register("name")}
@@ -98,18 +77,16 @@ const BookForm = () => {
           placeholder="Email*"
           error={errors.email}
         />
-        <div
-          className={css.calenderWrapper}
-          onClick={(e) =>
-            e.stopPropagation() || setIsCalendarOpen((prev) => !prev)
-          }
-        >
+        <div className={css.calenderWrapper} onClick={(e) => {
+          e.stopPropagation();
+          setIsCalendarOpen((prev) => !prev);
+        }}>
           <Controller name="date" control={control} render={renderCalendar} />
           {isCalendarOpen && (
             <Calendar
               date={date}
               handleSetDate={handleSetDate}
-              onClose={handleCloseCalendar}
+              onClose={() => setIsCalendarOpen(false)}
             />
           )}
         </div>
@@ -117,8 +94,8 @@ const BookForm = () => {
           {...register("comment")}
           className={css.textarea}
           placeholder="Comment"
-        ></textarea>
-        <LoadButton type={"submit"} style={{ marginLeft: "160px" }}>
+        />
+        <LoadButton type="submit" style={{ marginLeft: "160px" }}>
           Send
         </LoadButton>
       </form>
