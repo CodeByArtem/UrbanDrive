@@ -47,18 +47,18 @@ const CamperDetails = () => {
 
   if (loading) return <Loader />;
   if (errorMessage) return <p>Error: {errorMessage}</p>;
-  if (!camper) return <p>No camper found.</p>;
+  // if (!camper) return <p>No camper found.</p>;
 
   return (
     <div className={css.container}>
       <h3>{camper.name}</h3>
       <div className={css.header}>
-        <p className={css.price}>{formatRentPrice(camper.price)}</p>
         <div className={css.rating}>
           <Rating rating={camper.rating} countReviews={camper.reviews.length} />
           <Location>{camper.location}</Location>
         </div>
       </div>
+        <p className={css.price}>{formatRentPrice(camper.price)}</p>
       <div className={css.imageGallery}>
         {camper.gallery.map((image, index) => (
           <CamperImage key={index} src={image.original} alt={camper.name} />
