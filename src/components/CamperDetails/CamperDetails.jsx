@@ -2,8 +2,6 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { formatRentPrice } from '../../helpers';
 import { fetchCamper } from '../../api/catalog';
-import { useSelector } from 'react-redux';
-
 import css from './CamperDetails.module.css';
 import Rating from '../MIU/Rating/Raiting';
 import Location from '../MIU/Location/Location';
@@ -13,7 +11,8 @@ import Features from '../Features/Features';
 import Reviews from '../Reviews/Reviews';
 import BookForm from '../BookForm/BookForm';
 import Loader from '../Loader/Loader';
-import { selectError } from '../../redux/campers/selectors';
+import NotFound from '../NotFound/NotFound';
+
 
 const navList = ['features', 'reviews'];
 
@@ -22,17 +21,18 @@ const CamperDetails = () => {
   const [camper, setCamper] = useState(null);
   const [loading, setLoading] = useState(true);
   const [selectedNav, setSelectedNav] = useState(navList[0]);
-
-  const errorMessage = useSelector(selectError);
+  const [error, setError] = useState(null); 
 
   useEffect(() => {
     const getCamperDetails = async () => {
       setLoading(true);
+      setError(null);
       try {
         const data = await fetchCamper(id);
         setCamper(data);
       } catch (err) {
         console.error(err.message);
+        setError(err.message); 
       } finally {
         setLoading(false);
       }
@@ -46,8 +46,7 @@ const CamperDetails = () => {
   };
 
   if (loading) return <Loader />;
-  if (errorMessage) return <p>Error: {errorMessage}</p>;
-  // if (!camper) return <p>No camper found.</p>;
+  if (error) return <NotFound />; 
 
   return (
     <div className={css.container}>
@@ -58,7 +57,7 @@ const CamperDetails = () => {
           <Location>{camper.location}</Location>
         </div>
       </div>
-        <p className={css.price}>{formatRentPrice(camper.price)}</p>
+      <p className={css.price}>{formatRentPrice(camper.price)}</p>
       <div className={css.imageGallery}>
         {camper.gallery.map((image, index) => (
           <CamperImage key={index} src={image.original} alt={camper.name} />

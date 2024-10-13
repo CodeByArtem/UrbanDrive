@@ -1,43 +1,44 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { CATALOG_INITIAL_STATE } from "./initialState";
 import { getCampers, getMoreCampers } from "./operations";
+
+const initialState = {
+  data: [],
+  isFetching: false,
+  error: null,
+  isNextPage: false,
+};
 
 const campersSlice = createSlice({
   name: "campers",
-  initialState: CATALOG_INITIAL_STATE,
+  initialState,
+  reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(getCampers.pending, (state) => {
+        state.isFetching = true;
         state.error = null;
-        state.data = null;
-        state.isLoading = true;
       })
       .addCase(getCampers.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.data = action.payload.items;
-        state.nextPage = action.payload.items.length === 8;
-        state.total = action.payload.total;
+        state.isFetching = false;
+        state.data = action.payload; 
+        state.isNextPage = action.payload.length > 0; 
       })
       .addCase(getCampers.rejected, (state, action) => {
-        state.isLoading = false;
-        state.error = action.payload || action.error.message;
-        state.nextPage = false;
+        state.isFetching = false;
+        state.error = action.payload;
+        state.data = []; 
       })
       .addCase(getMoreCampers.pending, (state) => {
-        state.isLoading = true;
-        state.error = null;
+        state.isFetching = true;
       })
       .addCase(getMoreCampers.fulfilled, (state, action) => {
-        state.isLoading = false;
-        const existingIds = new Set(state.data.map(camper => camper.id));
-        const newCampers = action.payload.items.filter(camper => !existingIds.has(camper.id));
-        state.data = [...state.data, ...newCampers];
-        state.nextPage = action.payload.items.length === 4;
+        state.isFetching = false;
+        state.data = [...state.data, ...action.payload]; 
       })
+      
       .addCase(getMoreCampers.rejected, (state, action) => {
-        state.isLoading = false;
-        state.error = action.payload || action.error.message;
-        state.nextPage = false;
+        state.isFetching = false;
+        state.error = action.payload; 
       });
   },
 });

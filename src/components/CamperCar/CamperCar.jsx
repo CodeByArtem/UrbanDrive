@@ -26,7 +26,7 @@ const CamperCart = ({ camper, liked = true }) => {
 
   const handleLike = () => {
     dispatch(setFavorite(camper));
-    console.log(camper);
+ 
   };
 
   const hasGallery = camper.gallery && camper.gallery.length > 0;
