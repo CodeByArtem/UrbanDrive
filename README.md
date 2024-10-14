@@ -46,7 +46,7 @@
     npm run dev
     ```
 
-Додаток буде доступний за адресою: `http://localhost:3000`.
+Додаток буде доступний за адресою: `https://urban-drive-ijfb.vercel.app`.
 
 ## Використання
 

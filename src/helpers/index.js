@@ -38,7 +38,7 @@ export const getCategories = (camper) => {
 };
 
 export const formatRentPrice = (price) => {
-  return `€${price},00`;
+  return `€${price}.00`;
 };
 
 export const getAllDetails = (camper) => {
