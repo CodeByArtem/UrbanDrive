@@ -9,7 +9,7 @@ const checkIsActive = ({ isActive }) =>
 const Header = () => {
   return (
     <header className={css.header}>
-      <Link className={css.logo} to="/">
+      <Link className={css.logo} to="/" aria-label="Home Page">
         <svg className={css.logoIcon} width={136} height={16} aria-hidden="true">
           <use href={`${logo}#logo`}></use>
         </svg>
