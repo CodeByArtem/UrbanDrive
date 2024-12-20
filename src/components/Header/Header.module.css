@@ -84,14 +84,15 @@
   }
 
   .navList {
-    flex-direction: column; /* Располагаем навигацию вертикально */
-    padding-left: 0; /* Убираем отступы */
+    flex-wrap: wrap;
     justify-content: flex-start;
+    padding-left: 10px;
+    padding-right: 10px;
+    
   }
-
   .navLink {
     font-size: 12px; /* Уменьшаем размер шрифта */
-    padding: 8px; /* Уменьшаем отступы на кнопках */
+    padding: 3px; /* Уменьшаем отступы на кнопках */
   }
 
   .logoTitle {
