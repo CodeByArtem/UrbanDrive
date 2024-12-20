@@ -1,23 +1,20 @@
 .content {
-   
-    background-image: url("../../assets/img/Picture.png"); 
-    background-size: cover; 
-    background-position: center; 
-    width: 1440px;
-    height: 696px;
-      
+  background-image: url("../../assets/img/Picture.png");
+  background-size: cover;
+  background-position: center;
+  width: 100%; /* Сделаем ширину 100% */
+  height: 696px;
 }
 
 .wrapper {
   display: flex;
   flex-direction: column;
-padding-top: 256px;
-padding-left: 64px;
-
+  padding-top: 256px;
+  padding-left: 64px;
 }
 
 .title {
-  font-family:  "Inter", sans-serif;
+  font-family: "Inter", sans-serif;
   font-weight: 600;
   font-size: 48px;
   line-height: 67%;
@@ -30,12 +27,11 @@ padding-left: 64px;
 }
 
 .text {
-  font-family:  "Inter", sans-serif;;
+  font-family: "Inter", sans-serif;
   font-weight: 600;
   font-size: 24px;
   line-height: 0.67em;
   color: #f7f7f7;
-  
 }
 
 .link {
@@ -44,18 +40,70 @@ padding-left: 64px;
   width: 173px;
   height: 56px;
   font-family: "Inter", sans-serif;
-font-weight: 500;
-font-size: 16px;
-line-height: 1.5em;
-letter-spacing: -0.01em;
-color:  #fff;
-background:  #e44848;
-margin-top: 40px;
-
-
-  
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5em;
+  letter-spacing: -0.01em;
+  color: #fff;
+  background: #e44848;
+  margin-top: 40px;
 
   &:hover {
     border-color: var(--color-gold);
+  }
+}
+
+/* Адаптация для планшетов (max-width: 1024px) */
+@media (max-width: 1024px) {
+  .content {
+    height: 500px; /* Уменьшаем высоту */
+  }
+
+  .wrapper {
+    padding-top: 150px;
+    padding-left: 32px; /* Уменьшаем отступы */
+  }
+
+  .title {
+    font-size: 36px; /* Уменьшаем размер шрифта */
+    line-height: 60%;
+  }
+
+  .text {
+    font-size: 20px; /* Уменьшаем размер шрифта */
+  }
+
+  .link {
+    width: 150px; /* Уменьшаем ширину кнопки */
+    height: 50px; /* Уменьшаем высоту кнопки */
+    font-size: 14px; /* Уменьшаем размер шрифта кнопки */
+  }
+}
+
+/* Адаптация для мобильных устройств (max-width: 480px) */
+@media (max-width: 480px) {
+  .content {
+    height: 400px; /* Еще меньше высота */
+  }
+
+  .wrapper {
+    padding-top: 100px;
+    padding-left: 16px; /* Уменьшаем отступы */
+  }
+
+  .title {
+    font-size: 28px; /* Уменьшаем размер шрифта */
+    line-height: 50%;
+  }
+
+  .text {
+    font-size: 18px; /* Уменьшаем размер шрифта */
+  }
+
+  .link {
+    width: 130px; /* Уменьшаем ширину кнопки */
+    height: 45px; /* Уменьшаем высоту кнопки */
+    font-size: 14px; /* Уменьшаем размер шрифта кнопки */
+    padding: 14px 32px; /* Уменьшаем отступы кнопки */
   }
 }

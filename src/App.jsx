@@ -5,7 +5,7 @@ import FavoritePage from "./pages/FavoritesPage/FavoritesPage";
 import CamperDetails from "./components/CamperDetails/CamperDetails";
 import { ToastContainer } from "react-toastify";
 import NotFound from "./components/NotFound/NotFound";
-
+import './App.css';
 const HomePage = lazy(() => import("./pages/HomePage/HomePage"));
 const CatalogPage = lazy(() => import("./pages/CatalogPage/CatalogPage"));
 

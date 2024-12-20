@@ -1,16 +1,19 @@
 .header {
   border-bottom: 1px solid #f2f4f7;
   width: 1440px;
-  height: 72px; 
+  height: 72px;
   background: #f7f7f7;
-  display: flex; 
-  align-items: center; 
+  display: flex;
+  align-items: center;
+  padding-left: 16px; /* Добавляем отступ слева для мобильных */
+  padding-right: 16px; /* Добавляем отступ справа для мобильных */
 }
 
 .navList {
   display: flex;
   justify-content: center;
   padding-left: 386px;
+  flex-grow: 1; /* Это обеспечит центрирование навигации */
 }
 
 .navLink {
@@ -43,4 +46,55 @@
   font-weight: 600;
   line-height: 1;
   text-transform: uppercase;
+}
+
+/* Адаптация для планшетов (max-width: 1024px) */
+@media (max-width: 1024px) {
+  .header {
+    width: 100%; /* Ширина будет 100% на планшетах */
+    padding-left: 10px; /* Уменьшаем отступы */
+    padding-right: 10px;
+  }
+
+  .navList {
+    padding-left: 0; /* Убираем отступ слева */
+    justify-content: space-around; /* Размещаем элементы равномерно */
+    flex-grow: 0;
+  }
+
+  .logo {
+    padding-left: 20px; /* Уменьшаем отступ */
+  }
+
+  .logoTitle {
+    font-size: 20px; /* Уменьшаем размер шрифта */
+  }
+
+  .navLink {
+    font-size: 14px; /* Уменьшаем размер шрифта */
+  }
+}
+
+/* Адаптация для мобильных устройств (max-width: 480px) */
+@media (max-width: 480px) {
+  .header {
+    height: 60px; /* Уменьшаем высоту хедера */
+    padding-left: 10px; /* Уменьшаем отступы */
+    padding-right: 10px;
+  }
+
+  .navList {
+    flex-direction: column; /* Располагаем навигацию вертикально */
+    padding-left: 0; /* Убираем отступы */
+    justify-content: flex-start;
+  }
+
+  .navLink {
+    font-size: 12px; /* Уменьшаем размер шрифта */
+    padding: 8px; /* Уменьшаем отступы на кнопках */
+  }
+
+  .logoTitle {
+    font-size: 18px; /* Уменьшаем размер шрифта */
+  }
 }
