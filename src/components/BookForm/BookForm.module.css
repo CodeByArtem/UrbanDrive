@@ -1,8 +1,8 @@
 .container {
   border: 1px solid #DADDE1;
   border-radius: 10px;
-  padding: 44px;
-  
+  padding:  44px  0 44px 0;
+  width: 670px;
   
 }
 
@@ -48,4 +48,9 @@
 .textarea:focus,
 .textarea:focus-visible {
   outline: none;
+}
+
+
+.form {
+  padding: 0 10px;
 }
