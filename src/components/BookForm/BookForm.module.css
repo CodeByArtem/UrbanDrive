@@ -1,9 +1,10 @@
 .container {
   border: 1px solid #DADDE1;
   border-radius: 10px;
-  padding:  44px  0 44px 0;
-  width: 670px;
-  
+  padding: 44px 0;
+  width: 100%;
+  max-width: 670px;
+  margin: 0 auto;
 }
 
 .calenderWrapper {
@@ -17,15 +18,61 @@
   font-size: 20px;
   line-height: 1.2;
   margin-bottom: 8px;
+  text-align: center;
 }
 
 .text {
   color: var(--color-font-second);
   margin-bottom: 24px;
+  text-align: center;
 }
 
 .form > button {
   margin-top: 24px;
+  width: 100%;
+  max-width: 300px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Адаптация для планшетов (ширина экрана до 768px) */
+@media (max-width: 768px) {
+  .container {
+    padding: 32px 16px;
+    
+  }
+
+  .title {
+    font-size: 18px;
+  }
+
+  .text {
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+}
+
+/* Адаптация для мобильных устройств (ширина экрана до 480px) */
+@media (max-width: 480px) {
+  .container {
+    padding: 24px 12px;
+  }
+
+  .title {
+    font-size: 16px;
+    margin-bottom: 6px;
+  }
+
+  .text {
+    font-size: 12px;
+    margin-bottom: 16px;
+  }
+
+  .form > button {
+    margin-top: 20px;
+    width: 100%;
+  }
 }
 
 .textarea {

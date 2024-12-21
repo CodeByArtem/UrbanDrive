@@ -95,7 +95,8 @@ const BookForm = () => {
           className={css.textarea}
           placeholder="Comment"
         />
-        <LoadButton type="submit" style={{ marginLeft: "160px" }}>
+        <LoadButton  type="submit"
+  >
           Send
         </LoadButton>
       </form>
