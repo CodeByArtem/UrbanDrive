@@ -4,33 +4,89 @@
   width: 631px;
   height: 588px;
   background: #f7f7f7;
-  }
-  .categoryList {
+}
 
-    overflow: auto;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-bottom: 44px;
+.categoryList {
+  overflow: auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 44px;
+}
+
+.vehicleTitle {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1.2;
+  margin-bottom: 24px;
+}
+
+.vehicleList {
+  padding-top: 24px;
+  border-top: 1px solid rgba(16, 24, 40, 0.1);
+}
+
+.vehicleItem {
+  justify-content: space-between;
+  display: flex;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.33;
+}
+
+.vehicleItem:not(:last-child) {
+  margin-bottom: 14px;
+}
+
+/* Адаптация для планшетов */
+@media (max-width: 1024px) {
+  .container {
+    padding: 32px 48px; /* Уменьшаем отступы */
+    width: 100%; /* Контейнер занимает всю ширину */
+    height: auto; /* Высота подстраивается автоматически */
   }
+
+  .categoryList {
+    gap: 6px; /* Уменьшаем промежутки между элементами */
+    margin-bottom: 32px; /* Сокращаем отступ снизу */
+  }
+
   .vehicleTitle {
-    font-weight: 600;
-    font-size: 20px;
-    line-height: 1.2;
-    margin-bottom: 24px;
+    font-size: 18px; /* Уменьшаем размер шрифта */
+    margin-bottom: 20px; /* Сокращаем отступ снизу */
   }
-  
-  .vehicleList {
-    padding-top: 24px;
-    border-top: 1px solid rgba(16, 24, 40, 0.1);
-  }
+
   .vehicleItem {
-    justify-content: space-between;
-    display: flex;
-    font-weight: 500;
-    font-size: 18px;
-    line-height: 1.33;
+    font-size: 16px; /* Уменьшаем размер шрифта */
   }
+
   .vehicleItem:not(:last-child) {
-    margin-bottom: 14px;
+    margin-bottom: 12px; /* Сокращаем отступ между элементами */
   }
+}
+
+/* Адаптация для мобильных устройств */
+@media (max-width: 480px) {
+  .container {
+    padding: 24px 16px; /* Минимизируем отступы для компактности */
+    border-radius: 8px; /* Уменьшаем скругление углов */
+  }
+
+  .categoryList {
+    gap: 4px; /* Еще меньше промежутки между категориями */
+    margin-bottom: 24px; /* Сокращаем отступ снизу */
+  }
+
+  .vehicleTitle {
+    font-size: 16px; /* Еще меньше размер шрифта */
+    margin-bottom: 16px; /* Сокращаем отступ снизу */
+  }
+
+  .vehicleItem {
+    font-size: 14px; /* Уменьшаем шрифт для мобильных */
+  }
+
+  .vehicleItem:not(:last-child) {
+    margin-bottom: 10px; /* Еще меньше отступ между элементами */
+  }
+}

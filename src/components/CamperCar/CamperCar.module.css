@@ -80,3 +80,57 @@
   flex-wrap: wrap;
   margin-bottom: 24px;
 }
+
+/* Адаптация для планшетов */
+@media (max-width: 1024px) {
+  .container {
+    flex-direction: column;
+    height: auto;
+    gap: 16px;
+    padding: 16px;
+  }
+
+  .info {
+    height: auto;
+  }
+
+  .name {
+    font-size: 20px;
+  }
+
+  .price {
+    font-size: 20px;
+  }
+
+  .description {
+    margin: 16px 0;
+  }
+}
+
+/* Адаптация для мобильных устройств */
+@media (max-width: 480px) {
+  .container {
+    padding: 12px;
+    gap: 12px;
+  }
+
+  .name {
+    font-size: 18px;
+  }
+
+  .price {
+    font-size: 18px;
+  }
+
+  .infoRating {
+    gap: 8px;
+  }
+
+  .description {
+    margin: 12px 0;
+  }
+
+  .categoryList {
+    gap: 4px;
+  }
+}

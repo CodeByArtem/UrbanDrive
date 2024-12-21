@@ -7,8 +7,7 @@
   font-weight: 600;
   font-size: 24px;
   color: #101828;
-  width: 128px;
-  height: 32px;
+  width: auto;
   line-height: 1.25;
   padding-right: 40px;
   margin-bottom: 8px;
@@ -48,10 +47,10 @@
 
 .description {
   color: var(--color-font-second);
-  padding-bottom: 60px;
-  padding-top: 28px;
+  padding: 28px 0 60px;
   display: flex;
   justify-content: center;
+  text-align: center;
 }
 
 .navList {
@@ -60,21 +59,22 @@
   gap: 40px;
   border-bottom: 1px solid rgba(16, 24, 40, 0.2);
   padding-bottom: 24px;
+  justify-content: center;
 }
 
 .footerWrapper {
   display: flex;
-  gap: 40px;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
   padding-top: 44px;
   padding-bottom: 80px;
 }
 
-
 .closeButton {
   position: absolute;
-  top: 40px;
-  right: 40px;
+  top: 20px;
+  right: 20px;
   width: 32px;
   height: 32px;
   background: transparent;
@@ -113,10 +113,77 @@
 .imageGallery {
   display: flex;
   flex-wrap: wrap;
-  gap: 48px;
+  gap: 16px;
   justify-content: center;
 }
 
 .imageGallery img {
-  max-width: 100%; 
+  max-width: 100%;
+  border-radius: 8px;
+}
+
+@media (max-width: 1024px) {
+  .container {
+    padding: 32px 24px 40px;
+  }
+
+  .navList {
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center;
+  }
+
+  .imageList {
+    gap: 12px;
+  }
+
+  .footerWrapper {
+    padding-top: 32px;
+    padding-bottom: 60px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 20px 16px 32px;
+  }
+
+  .name {
+    font-size: 20px;
+  }
+
+  .price {
+    font-size: 20px;
+  }
+
+  .imageList {
+    flex-direction: column;
+  }
+
+  .footerWrapper {
+    gap: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 16px;
+  }
+
+  .navList {
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .name {
+    font-size: 18px;
+  }
+
+  .price {
+    font-size: 18px;
+  }
+
+  .description {
+    font-size: 14px;
+  }
 }

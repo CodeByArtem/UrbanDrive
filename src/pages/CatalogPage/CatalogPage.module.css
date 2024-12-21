@@ -1,14 +1,41 @@
 .container {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    padding-top: 48px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding-top: 48px;
+}
+
+.filters {
+  max-width: 360px;
+  width: 100%;
+}
+
+.catalog {
+  max-width: 888px;
+  width: 100%;
+}
+
+@media (max-width: 1024px) {
+  .container {
+    flex-direction: column; /* Переводим элементы в столбик */
+    gap: 16px; /* Уменьшаем промежуток */
+    padding-top: 32px; /* Уменьшаем отступ сверху */
   }
-  .filters {
-    max-width: 360px;
-    width: 100%;
-  }
+
+  .filters,
   .catalog {
-    max-width: 888px;
-    width: 100%;
+    max-width: 100%; /* Убираем фиксированные максимальные ширины */
   }
+}
+
+@media (max-width: 480px) {
+  .container {
+    gap: 12px; /* Еще меньше промежуток для мобильных */
+    padding-top: 24px; /* Уменьшаем отступ сверху для маленьких экранов */
+  }
+
+  .filters,
+  .catalog {
+    padding: 0 16px; /* Добавляем боковые отступы для компактности */
+  }
+}
