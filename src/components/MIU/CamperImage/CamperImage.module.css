@@ -1,16 +1,42 @@
+/* Базовые стили */
 .container {
     min-width: 290px;
     width: 290px;
     height: 310px;
     overflow: hidden;
     border-radius: 10px;
-  }
-  
-  .image {
-    width: 100%;
+}
+
+.image {
+    width: 70%;
     height: 100%;
     object-fit: cover;
     object-position: 50% 50%;
     overflow: hidden;
     border-radius: 10px;
-  }
+}
+
+/* Мобильные устройства (ширина экрана до 600px) */
+@media (max-width: 600px) {
+    .container {
+        width: 100%; /* Контейнер будет занимать всю ширину экрана */
+        height: 250px; /* Снижаем высоту */
+    }
+
+}
+
+/* Планшеты (ширина экрана от 601px до 1024px) */
+@media (max-width: 1024px) {
+    .container {
+        width: 80%; /* Контейнер будет занимать 80% ширины */
+        height: 280px; /* Увеличиваем высоту */
+    }
+}
+
+/* Ноутбуки и большие экраны (ширина экрана от 1025px) */
+@media (min-width: 1025px) {
+    .container {
+        width: 290px; /* Оставляем фиксированную ширину */
+        height: 310px; /* Фиксированная высота */
+    }
+}
